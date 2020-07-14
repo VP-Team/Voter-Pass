@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
- 
+import QRCode from './components/QRCode';
 
 
 function HomeScreen({ navigation }) {
@@ -115,6 +115,7 @@ function FinalScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>FINAL</Text>
+      <QRCode></QRCode>
       <Text>Voter's Name:</Text>
       <Text>Return Time:</Text>
       <StatusBar style="auto" />
