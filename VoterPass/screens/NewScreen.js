@@ -8,7 +8,9 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native';
 import uuid from 'react-native-uuid';
+import * as SQLite from 'expo-sqlite';
 
+const db = SQLite.openDatabase("voter.db");
 
 function NewScreen({ navigation }) {
     const [forceUpdate, forceUpdateId] = useForceUpdate()
@@ -22,7 +24,7 @@ function NewScreen({ navigation }) {
           );
         },
         () => {console.log("Error adding to database!")},
-        forceUpdate
+        null
       );
     }
     return (
@@ -33,8 +35,11 @@ function NewScreen({ navigation }) {
         onPress={() => navigation.navigate('Scan')}
         />
         <Button 
-        title="ENTER MANUALLY"
-        onPress={() => navigation.navigate('Manual')}
+        title="GENERATE ID"
+        onPress={() => {
+          add();
+          console.log("GENERATE ID CLICKED")
+        }}
         />
         <StatusBar style="auto" />
       </View>

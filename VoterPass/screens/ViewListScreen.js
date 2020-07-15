@@ -19,7 +19,7 @@ function Voters() {
         "SELECT * FROM voter;",[],
         (_, { rows: { _array } }) => setVoters(_array));
     })
-  })
+  }, [])
 
   if (voters === null || voters.length === 0) {
     return null;
