@@ -6,10 +6,10 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
-
+import { Button } from 'react-native';
 
 function HomeScreen({ navigation }) {
+
     return (
       <View style={styles.container}>
         <Text>Preferred # of voters in line</Text>

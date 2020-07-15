@@ -7,12 +7,13 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native'
-
+import QRCode from '../components/QRCode';
 
 function FinalScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <Text>FINAL</Text>
+        <QRCode></QRCode>
         <Text>Voter's Name:</Text>
         <Text>Return Time:</Text>
         <StatusBar style="auto" />

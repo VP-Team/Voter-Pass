@@ -6,13 +6,49 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button } from 'react-native';
+import * as SQLite from 'expo-sqlite';
 
+const db = SQLite.openDatabase("voter.db");
+
+function Voters() {
+  const [voters, setVoters] = React.useState([]);
+  React.useEffect(() => {
+    db.transaction(tx => {
+      tx.executeSql(
+        "SELECT * FROM voter;",[],
+        (_, { rows: { _array } }) => setVoters(_array));
+    })
+  })
+
+  if (voters === null || voters.length === 0) {
+    return null;
+  }
+
+  const handleClick = (id) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        "DELETE FROM voter WHERE id=?;", [id]);
+      tx.executeSql(
+        "SELECT * FROM voter;",[],
+        (_, { rows: { _array } }) => setVoters(_array));
+   })
+  }
+
+  return(
+    <View>
+      {voters.map(({ id, time}) => (
+        <Button key={id} title={id} onPress={() => handleClick(id)}></Button>
+      ))}
+    </View>
+  );
+}
 
 function ViewListScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <Text>View List</Text>
+        <Voters></Voters>
         <StatusBar style="auto" />
         <Button 
         title="New Voter"

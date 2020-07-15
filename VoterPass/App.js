@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import * as SQLite from 'expo-sqlite';
 import React from 'react';
 import { StyleSheet, Text, View, Button, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -19,6 +20,8 @@ import FinalScreen from './screens/FinalScreen';
 
 registerScreens();
 
+const db = SQLite.openDatabase("voter.db");
+
 const Stack = createStackNavigator();
 
 Navigation.events().registerAppLaunchedListener(() => {
@@ -32,6 +35,13 @@ Navigation.events().registerAppLaunchedListener(() => {
 });
 
 function App() {
+  /* On render of app component, voter table in database will be created if it does not exist */
+  React.useEffect(() => {
+    db.transaction(tx => {
+      tx.executeSql("DROP TABLE IF EXISTS VOTER");
+      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text);");
+    });
+  }, [])
   //const scheme = useColorScheme();
   return (
     <NavigationContainer>
@@ -48,14 +58,5 @@ function App() {
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
 
 export default App;
