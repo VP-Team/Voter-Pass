@@ -7,17 +7,21 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native';
-import uuid from 'react-native-uuid';
+import uuid from 'uuid-random';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase("voter.db");
 
-function NewScreen({ navigation }) {
+
+function NewScreen({ route, navigation }) {
+   var tempID
     const [forceUpdate, forceUpdateId] = useForceUpdate()
     const add = () => {
       db.transaction(
         tx => {
-          let id = uuid.v4();
+          let id = uuid();
+          console.log(uuid());
+          tempID = id;
           tx.executeSql("insert into voter (id, time) values (?, '12:23 PM')", [id]);
           tx.executeSql("select * from voter", [], (_, { rows }) =>
             console.log(JSON.stringify(rows))
@@ -29,7 +33,7 @@ function NewScreen({ navigation }) {
     }
     return (
       <View style={styles.container}>
-        <Text>New Voter information</Text>
+        <Text>New Voter information. {tempID} </Text>
         <Button 
         title="SCAN ID/TAKE PICTURE"
         onPress={() => navigation.navigate('Scan')}
@@ -38,7 +42,8 @@ function NewScreen({ navigation }) {
         title="GENERATE ID"
         onPress={() => {
           add();
-          console.log("GENERATE ID CLICKED")
+          console.log("GENERATE ID CLICKED!")
+          navigation.navigate('Final', {itemID: tempID})
         }}
         />
         <StatusBar style="auto" />

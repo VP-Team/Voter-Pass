@@ -5,14 +5,15 @@ import {
 } from 'react-native';
 // import all basic components
 
-
+var tempID
 const QRCodeMaker= (props) => {
   //Will change when we connect it to the Unique IDs and time estimates
- const [inputValue, setInputValue] = useState('');
- const [valueForQRCode, setValueForQRCode] = useState('https://www.youtube.com/watch?v=oHg5SJYRHA0');
- const handleValueInput = e => {
-  setInputValue(e.target.value);
-};
+
+ const [valueForQRCode, setValueForQRCode] = useState('Hello');
+ const valueUpdate= (tempID)=>{
+   setValueForQRCode(tempID);
+ }
+
     return (
       <View>
         <QRCode

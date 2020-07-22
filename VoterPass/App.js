@@ -16,6 +16,7 @@ import ManualScreen from './screens/ManualScreen';
 import ViewListScreen from './screens/ViewListScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import FinalScreen from './screens/FinalScreen';
+import QRCodeScannerScreen from './screens/QRCodeScanner';
 //import { Button } from './components/Button'
 
 registerScreens();
@@ -54,6 +55,7 @@ function App() {
         <Stack.Screen name="ViewList" component={ViewListScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Final" component={FinalScreen} />
+        <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

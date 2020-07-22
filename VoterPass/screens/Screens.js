@@ -11,5 +11,6 @@ export function registerScreens() {
     Navigation.registerComponent('Manual', () => require('./ManualScreen').default);
     Navigation.registerComponent('ViewList', () => require('./ViewListScreen').default);
     Navigation.registerComponent('Settings', () => require('./SettingsScreen').default);
+    Navigation.registerComponent('QRCodeScanner',() => require('./QRCodeScanner').default)
     Navigation.registerComponent('Final', () => require('./FinalScreen').default);
 }

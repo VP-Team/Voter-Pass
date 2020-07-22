@@ -8,8 +8,10 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native'
 import QRCode from '../components/QRCode';
+import { BaseRouter } from '@react-navigation/native';
 
-function FinalScreen({ navigation }) {
+function FinalScreen({route, navigation }) {
+const {itemID} = route.params;
     return (
       <View style={styles.container}>
         <Text>FINAL</Text>
@@ -19,6 +21,7 @@ function FinalScreen({ navigation }) {
         <StatusBar style="auto" />
         <Button 
         title="OK"
+        onPress={()=>navigation.navigate('Next')}
         />
       </View>
     )
