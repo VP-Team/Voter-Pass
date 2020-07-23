@@ -9,7 +9,7 @@ var tempID
 const QRCodeMaker= (props) => {
   //Will change when we connect it to the Unique IDs and time estimates
 
- const [valueForQRCode, setValueForQRCode] = useState('Hello');
+ const [valueForQRCode, setValueForQRCode] = useState(props.id);
  const valueUpdate= (tempID)=>{
    setValueForQRCode(tempID);
  }

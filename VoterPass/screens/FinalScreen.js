@@ -10,18 +10,19 @@ import { Button } from 'react-native'
 import QRCode from '../components/QRCode';
 import { BaseRouter } from '@react-navigation/native';
 
-function FinalScreen({route, navigation }) {
-const {itemID} = route.params;
-    return (
+function FinalScreen({ route, navigation }) {
+  let ID = route.params.ID;
+  let time = route.params.time;
+  return (
       <View style={styles.container}>
         <Text>FINAL</Text>
-        <QRCode></QRCode>
-        <Text>Voter's Name:</Text>
-        <Text>Return Time:</Text>
+        <QRCode id = {ID}></QRCode>
+        <Text>Voter's ID: {ID}</Text>
+        <Text>Return Time: {time}</Text>
         <StatusBar style="auto" />
         <Button 
-        title="OK"
-        onPress={()=>navigation.navigate('Next')}
+          title={"Home"}
+          onPress={() => navigation.navigate('Next')}
         />
       </View>
     )
