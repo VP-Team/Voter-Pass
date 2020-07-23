@@ -18,7 +18,8 @@ function FinalScreen({ navigation }) {
         <Text>Return Time:</Text>
         <StatusBar style="auto" />
         <Button 
-        title="OK"
+          title={"Home"}
+          onPress={() => navigation.navigate('Next')}
         />
       </View>
     )

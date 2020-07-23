@@ -31,17 +31,13 @@ function NewScreen({ navigation }) {
       <View style={styles.container}>
         <Text>New Voter information</Text>
         <Button 
-        title="SCAN ID/TAKE PICTURE"
-        onPress={() => navigation.navigate('Scan')}
-        />
-        <Button 
-        title="GENERATE ID"
+        title="Add New Voter"
         onPress={() => {
           add();
-          console.log("GENERATE ID CLICKED")
+          console.log("GENERATE ID CLICKED");
+          navigation.navigate('Final');
         }}
         />
-        <StatusBar style="auto" />
       </View>
     )
   }
