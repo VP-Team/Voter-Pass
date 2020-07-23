@@ -9,13 +9,15 @@ import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native'
 import QRCode from '../components/QRCode';
 
-function FinalScreen({ navigation }) {
-    return (
+function FinalScreen({ route, navigation }) {
+  let ID = route.params.ID;
+  let time = route.params.time;
+  return (
       <View style={styles.container}>
         <Text>FINAL</Text>
         <QRCode></QRCode>
-        <Text>Voter's Name:</Text>
-        <Text>Return Time:</Text>
+        <Text>Voter's ID: {ID}</Text>
+        <Text>Return Time: {time}</Text>
         <StatusBar style="auto" />
         <Button 
           title={"Home"}
