@@ -15,7 +15,7 @@ function FinalScreen({ route, navigation }) {
   return (
       <View style={styles.container}>
         <Text>FINAL</Text>
-        <QRCode></QRCode>
+        <QRCode id = {ID}></QRCode>
         <Text>Voter's ID: {ID}</Text>
         <Text>Return Time: {time}</Text>
         <StatusBar style="auto" />

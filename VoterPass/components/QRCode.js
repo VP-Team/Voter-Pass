@@ -9,7 +9,7 @@ import {
 const QRCodeMaker= (props) => {
   //Will change when we connect it to the Unique IDs and time estimates
  const [inputValue, setInputValue] = useState('');
- const [valueForQRCode, setValueForQRCode] = useState('https://www.youtube.com/watch?v=oHg5SJYRHA0');
+ const [valueForQRCode, setValueForQRCode] = useState(props.id);
  const handleValueInput = e => {
   setInputValue(e.target.value);
 };
