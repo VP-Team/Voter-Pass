@@ -38,7 +38,9 @@ function Voters() {
   return(
     <View>
       {voters.map(({ id, time}) => (
-        <Button key={id} title={id} onPress={() => handleClick(id)}></Button>
+        <Button key={id} title={id + " " + time} titleStyle={{
+          color : "black", fontSize : 8
+        }} onPress={() => handleClick(id)}></Button>
       ))}
     </View>
   );
@@ -49,11 +51,10 @@ function ViewListScreen({ navigation }) {
       <View style={styles.container}>
         <Text>View List</Text>
         <Voters></Voters>
-        <StatusBar style="auto" />
-        <Button 
+        {/* <Button 
         title="New Voter"
         onPress={() => navigation.navigate('New')}
-        />
+        /> */}
       </View>
     )
   }
@@ -64,6 +65,10 @@ function ViewListScreen({ navigation }) {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    Button: {
+      color : "black",
+      fontSize : 12
     }
   });
 
