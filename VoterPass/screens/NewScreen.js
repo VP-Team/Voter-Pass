@@ -19,7 +19,7 @@ const default_date = new Date("2015-03-25T12:00:00Z");
 
 function NewScreen({ navigation }) {
     const [forceUpdate, forceUpdateId] = useForceUpdate();
-    const [ID, setID] = React.useState(uuid.v4());
+    const [ID, setID] = React.useState(uuid());
     const [time, setTime] = React.useState(null);
     const [m, setM] = React.useState("AM");
     const [isTimePickerVisible, setTimePickerVisibility] = React.useState(false);
