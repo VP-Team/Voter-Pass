@@ -9,14 +9,15 @@ import { DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { registerScreens } from './screens/Screens';
 import { Navigation } from 'react-native-navigation';
 import HomeScreen from './screens/HomeScreen';
-import NextScreen from './screens/NextScreen';
-import NewScreen from './screens/NewScreen';
+import MainScreen from './screens/MainScreen';
+import NewVoterScreen from './screens/NewVoterScreen';
 import ScanScreen from './screens/ScanScreen';
 import ManualScreen from './screens/ManualScreen';
 import ViewListScreen from './screens/ViewListScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import FinalScreen from './screens/FinalScreen';
 import QRCodeScannerScreen from './screens/QRCodeScanner';
+import HelpScreen from './screens/HelpScreen'
 //import { Button } from './components/Button'
 
 registerScreens();
@@ -48,14 +49,15 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Next" component={NextScreen} />
-        <Stack.Screen name="New" component={NewScreen} />
+        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="NewVoter" component={NewVoterScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
         <Stack.Screen name="Manual" component={ManualScreen} />
         <Stack.Screen name="ViewList" component={ViewListScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Final" component={FinalScreen} />
         <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
+        <Stack.Screen name="Help" component={HelpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

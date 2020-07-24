@@ -12,11 +12,11 @@ import { Button } from 'react-native'
 function NextScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <Text>Next with Options below</Text>
+        <Text style = {styles.text}>Select from the Options below:</Text>
         <StatusBar style="auto" />
         <Button 
         title="New Voter"
-        onPress={() => navigation.navigate('New')}
+        onPress={() => navigation.navigate('NewVoter')}
         />
         <Button 
         title="View List"
@@ -30,6 +30,10 @@ function NextScreen({ navigation }) {
         title="List Settings"
         onPress={() => navigation.navigate('Settings')}
         />
+        <Button 
+        title="Help"
+        onPress={() => navigation.navigate('Help')}
+        />
       </View>
     )
   }
@@ -40,6 +44,9 @@ function NextScreen({ navigation }) {
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    text: {
+      fontSize: 25
     }
   });
 

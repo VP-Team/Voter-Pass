@@ -22,7 +22,7 @@ function FinalScreen({ route, navigation }) {
         <StatusBar style="auto" />
         <Button 
           title={"Home"}
-          onPress={() => navigation.navigate('Next')}
+          onPress={() => navigation.navigate('Main')}
         />
       </View>
     )

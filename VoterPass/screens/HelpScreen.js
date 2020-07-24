@@ -6,21 +6,17 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native';
+import { Button } from 'react-native'
+import QRCode from '../components/QRCode';
 
-function HomeScreen({ navigation }) {
-
-    return (
+function HelpScreen({ route, navigation }) {
+  
+  return (
       <View style={styles.container}>
-        <Text>Preferred # of voters in line</Text>
-        <Text>Average voting time</Text>
-        <StatusBar style="auto" />
-        <Button
-        title="Next"
-        onPress={() => navigation.navigate('Main')}
-        />
+        <Text>Hello!!</Text>
+       
       </View>
-    );
+    )
   }
 
   const styles = StyleSheet.create({
@@ -32,4 +28,4 @@ function HomeScreen({ navigation }) {
     }
   });
 
-  export default HomeScreen;
+  export default HelpScreen;
