@@ -22,11 +22,7 @@ function FinalScreen({ route, navigation }) {
         <StatusBar style="auto" />
         <Button 
           title={"Home"}
-<<<<<<< HEAD
           onPress={() => navigation.navigate('Main')}
-=======
-          onPress={() => navigation.navigate('Next')}
->>>>>>> QRCode
         />
       </View>
     )
