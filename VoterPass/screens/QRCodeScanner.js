@@ -22,10 +22,10 @@ export default function QRCodeScaner() {
             tx.executeSql("select id from voter", [], (_, { rows }) =>
                {console.log(JSON.stringify(data))
                   console.log(JSON.stringify(rows._array))
-                  var temp = JSON.stringify(data);
+                  
                
                   for(var i=0; i<rows._array.length; i++){
-                    if(temp === JSON.stringify(rows._array[i].id)){
+                    if(data === rows._array[i].id){
                      setIdIsValid(true);
                      break;
                     } 
