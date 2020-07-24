@@ -19,7 +19,7 @@ const default_date = new Date("2015-03-25T12:00:00Z");
 
 function NewScreen({ navigation }) {
     const [forceUpdate, forceUpdateId] = useForceUpdate();
-    const [ID, setID] = React.useState(uuid.v4());
+    const [ID, setID] = React.useState(uuid());
     const [time, setTime] = React.useState(null);
     const [m, setM] = React.useState("AM");
     const [isTimePickerVisible, setTimePickerVisibility] = React.useState(false);
@@ -68,61 +68,45 @@ function NewScreen({ navigation }) {
 
     return (
       <View style={styles.container}>
-<<<<<<< HEAD
-        <Text>New Voter information. {tempID} </Text>
-        <Button 
-        title="SCAN ID/TAKE PICTURE"
-        onPress={() => navigation.navigate('Scan')}
-=======
-        <Text>New Voter information</Text>
-        <Button title="Select Time" onPress={showTimePicker} />
-        <DateTimePickerModal
-          isVisible={isTimePickerVisible}
-          mode="time"
-          headerTextIOS="Pick a return time"
-          onConfirm={handleConfirm}
-          onCancel={hideTimePicker}
->>>>>>> 76c4973ac57d76d298fa1c86f08b4cdb997ebc53
-        />
-        {/* based on if they have confirmed time or not, display the Vote time*/}
-        {show && <Text>Vote Time: {time}</Text>}
-        <Button 
-<<<<<<< HEAD
-        title="GENERATE ID"
+      <Text>New Voter information</Text>
+      <Button title="Select Time" onPress={showTimePicker} />
+      <DateTimePickerModal
+        isVisible={isTimePickerVisible}
+        mode="time"
+        headerTextIOS="Pick a return time"
+        onConfirm={handleConfirm}
+        onCancel={hideTimePicker}
+      />
+      {/* based on if they have confirmed time or not, display the Vote time*/}
+      {show && <Text>Vote Time: {time}</Text>}
+      <Button 
+        title="Add New Voter"
         onPress={() => {
-          add();
-          console.log("GENERATE ID CLICKED!")
-          navigation.navigate('Final', {itemID: tempID})
+          if(time){
+            add();
+            console.log("GENERATE ID CLICKED");
+            navigation.navigate('Final', {ID, time});
+          } else{
+              Alert.alert("No time entered!", "Please enter a voting time", [{text: "OK"}])
+          }
         }}
-=======
-          title="Add New Voter"
-          onPress={() => {
-            if(time){
-              add();
-              console.log("GENERATE ID CLICKED");
-              navigation.navigate('Final', {ID, time});
-            } else{
-                Alert.alert("No time entered!", "Please enter a voting time", [{text: "OK"}])
-            }
-          }}
->>>>>>> 76c4973ac57d76d298fa1c86f08b4cdb997ebc53
-        />
-      </View>
-    )
+      />
+    </View>
+  )
+}
+
+function useForceUpdate() {
+  const [value, setValue] = React.useState(0);
+  return [() => setValue(value + 1), value];
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
+});
 
-  function useForceUpdate() {
-    const [value, setValue] = React.useState(0);
-    return [() => setValue(value + 1), value];
-  }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
-
-  export default NewScreen;
+export default NewScreen;
