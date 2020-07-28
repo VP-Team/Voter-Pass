@@ -6,7 +6,7 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native';
+import { Button, ScrollView, Dimensions } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase("voter.db");
@@ -36,20 +36,29 @@ function Voters() {
   }
 
   return(
-    <View>
-      {voters.map(({ id, time, check_in}) => (
-        <Button key={id} title={id + " " + time + " " + check_in} titleStyle={{
-          color : "black", fontSize : 8
-        }} onPress={() => handleClick(id)}></Button>
-      ))}
-    </View>
+
+      <ScrollView style={styles.listItem}>
+        <View style={styles.container}>
+          {voters.map(({ id, time}) => (
+            <View style={styles.card}>
+
+              <Text style={styles.text}>Time: {time}</Text>
+              <Text style={styles.text}>Id: {id}</Text>
+              <Button title="delete" onPress={()=> handleClick(id)}></Button>
+
+            </View>
+          ))}
+        </View>
+      </ScrollView>
   );
 }
 
+
+
 function ViewListScreen({ navigation }) {
     return (
-      <View style={styles.container}>
-        <Text>View List</Text>
+      <View>
+        <Text style={styles.text}>View List</Text>
         <Voters></Voters>
         {/* <Button 
         title="New Voter"
@@ -61,15 +70,27 @@ function ViewListScreen({ navigation }) {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems:"center",
     },
-    Button: {
-      color : "black",
-      fontSize : 12
+    listItem:{
+      height:"95%",
+      width:"100%",
+
+    },
+    card:{
+      height: Dimensions.get('window').height / 10,
+      width:"90%",
+      backgroundColor:"white",
+      borderRadius:10,
+      justifyContent:"center",
+      margin: 3,
+    },
+    text: {
+      justifyContent: 'center',
+      textAlign:"center",
+      color : "black", 
+      fontSize : 15,
     }
   });
-
+  
   export default ViewListScreen;
