@@ -40,8 +40,8 @@ function App() {
   /* On render of app component, voter table in database will be created if it does not exist */
   React.useEffect(() => {
     db.transaction(tx => {
-      //tx.executeSql("DROP TABLE IF EXISTS VOTER");
-      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text);");
+      tx.executeSql("DROP TABLE IF EXISTS VOTER");
+      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text, check_in integer);");
     });
   }, [])
   //const scheme = useColorScheme();

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as SQLite from 'expo-sqlite';
 
 const db = SQLite.openDatabase("voter.db");
 
-export default function QRCodeScaner() {
+export default function QRCodeScaner ({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [idIsValid, setIdIsValid] = useState(false);
@@ -16,39 +16,60 @@ export default function QRCodeScaner() {
     })();
   }, []);
 
-  const checkValidId = (data) => {
-    db.transaction(
-      tx => {
-            tx.executeSql("select id from voter", [], (_, { rows }) =>
-               {console.log(JSON.stringify(data))
-                  console.log(JSON.stringify(rows._array))
-                  
-               
-                  for(var i=0; i<rows._array.length; i++){
-                    if(data === rows._array[i].id){
-                     setIdIsValid(true);
-                     break;
-                    } 
+  const checkInVoter = (data) => {
+    console.log("Checking in voter with ID: " + data);
+    db.transaction(tx => {
+      tx.executeSql("UPDATE voter SET check_in = 1 WHERE id=?", [data]);
+    });
+  }
 
-                  }
-              }       
-          );
-      }
-   ) 
- }
+  const checkValidId = (data) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        "SELECT id FROM voter WHERE id=?;", [data],
+        (_, { rows: { _array } }) => {
+          {/* Query gets the count of the ID's that match the data passed in, if the array is not null then we found the ID in the database
+              so alert that we found and set idIsValid to true */}
+          console.log(JSON.stringify(_array))
+          console.log(_array.length)
+          if(_array.length != 0){
+            if(!idIsValid){
+              console.log();
+              Alert.alert("Voter Valid", "ID is valid. Check in voter?", [{
+                text: "No",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              }, {
+                text: "Yes",
+                onPress: () => {
+                  checkInVoter(data)
+                  navigation.navigate('Main');
+                },
+                style: "default"
+              }]);
+              setIdIsValid(true);
+            }
+          } else{
+            Alert.alert("Voter Not Valid", "ID is not valid.", [
+              {
+                text: "Scan",
+                style: "cancel"
+              },
+              {
+                text: "Back to Main",
+                onPress: () => {navigation.navigate('Main')},
+                style: "default"
+              }
+            ]);
+            setIdIsValid(false);
+          }
+        });
+    })
+  }
  
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     checkValidId(data);
-    if(idIsValid == true){
-    alert(`Bar code with type ${type} and data ${data} is a Valid Id`);
-    console.log("Valid ID Scanned.")
-    }
-    else{
-      alert(`Bar code with type ${type} and data ${data} is an InValid Id`);
-     console.log("Invalid ID Scanned.")
-    }
-    setIdIsValid(false);
   };
 
   if (hasPermission === null) {

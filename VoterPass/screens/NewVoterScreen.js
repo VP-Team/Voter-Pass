@@ -28,7 +28,7 @@ function NewScreen({ navigation }) {
     const add = () => {
       db.transaction(
         tx => {
-          tx.executeSql("insert into voter (id, time) values (?, ?)", [ID, time]);
+          tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, time]);
           tx.executeSql("select * from voter", [], (_, { rows }) =>
             console.log(JSON.stringify(rows))
           );
@@ -56,9 +56,14 @@ function NewScreen({ navigation }) {
         hours = hours - 12;
         setM("PM");
       }
-      let min = time.getMinutes();
       hours = hours.toString();
-      min = min.toString();
+      
+      let min = time.getMinutes();
+      if(min < 10){
+        min = "0" + min.toString()
+      } else{
+        min = min.toString();
+      }
       let new_time = hours + ":" + min + " " + m;
       console.log(new_time);
       setTime(new_time);

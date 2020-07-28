@@ -37,8 +37,8 @@ function Voters() {
 
   return(
     <View>
-      {voters.map(({ id, time}) => (
-        <Button key={id} title={id + " " + time} titleStyle={{
+      {voters.map(({ id, time, check_in}) => (
+        <Button key={id} title={id + " " + time + " " + check_in} titleStyle={{
           color : "black", fontSize : 8
         }} onPress={() => handleClick(id)}></Button>
       ))}
