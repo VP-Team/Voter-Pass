@@ -23,12 +23,8 @@ function NextScreen({ navigation }) {
         onPress={() => navigation.navigate('ViewList')}
         />
         <Button 
-        title="QR Scanner"
-        onPress={()=> navigation.navigate('QRCodeScanner')}
-        />
-        <Button 
         title="List Settings"
-        onPress={() => navigation.navigate('Settings')}
+        onPress={() => navigation.navigate('Settings')}        
         />
         <Button 
         title="Help"
