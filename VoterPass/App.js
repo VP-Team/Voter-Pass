@@ -43,6 +43,10 @@ function App() {
     });
   }, [])
   //const scheme = useColorScheme();
+  const devFlag = Expo.Constants.manifest.dev_flag
+    if (devFlag){
+      //Load some testing data
+    } 
   return (
     <NavigationContainer>
       <Stack.Navigator>
