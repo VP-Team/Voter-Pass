@@ -44,7 +44,7 @@ function Voters() {
 
               <Text style={styles.text}>Time: {time}</Text>
               <Text style={styles.text}>Id: {id}</Text>
-              <Button title="delete" onPress={()=> handleClick(id)}></Button>
+              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
 
             </View>
           ))}
@@ -70,6 +70,7 @@ function ViewListScreen({ navigation }) {
 
   const styles = StyleSheet.create({
     container: {
+      flex: 1,
       alignItems:"center",
     },
     listItem:{
