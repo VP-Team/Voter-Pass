@@ -30,6 +30,7 @@ function MainScreen({ navigation }) {
         />
         <Button 
         title="QR Scanner"
+        style={styles.button}
         onPress={()=> navigation.navigate('QRCodeScanner')}
         />
         <Button 
@@ -39,6 +40,7 @@ function MainScreen({ navigation }) {
         />
         <Button 
         title="Help"
+        style={styles.button}
         onPress={() => navigation.navigate('Help')}
         />
       </View>

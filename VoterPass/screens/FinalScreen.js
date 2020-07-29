@@ -14,13 +14,12 @@ import styles from '../Styling'
 function FinalScreen({ route, navigation }) {
   let ID = route.params.ID;
   let time = route.params.time;
-  return (
+  return ( //<CustomHeader /> removed -- fixed the 'Add New Voter' button error
       <View style={styles.container}>
-        <CustomHeader/>
-        <Text>FINAL</Text>
+        <Text style={styles.text}>FINAL</Text>
         <QRCode id = {ID}></QRCode>
-        <Text>Voter's ID: {ID}</Text>
-        <Text>Return Time: {time}</Text>
+        <Text style={styles.text}>Voter's ID: {ID}</Text>
+        <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
         <Button 
           title={"Home"}

@@ -77,8 +77,8 @@ function NewScreen({ navigation }) {
     return (
       <View style={styles.container}>
       <CustomHeader/>
-      <Text>New Voter information</Text>
-      <Button title="Select Time" onPress={showTimePicker} />
+      <Text style={styles.text}>New Voter information</Text>
+      <Button title="Select Time" style={styles.button} onPress={showTimePicker} />
       <DateTimePickerModal
         isVisible={isTimePickerVisible}
         mode="time"
@@ -90,6 +90,7 @@ function NewScreen({ navigation }) {
       {show && <Text>Vote Time: {time}</Text>}
       <Button 
         title="Add New Voter"
+        style={styles.button}
         onPress={() => {
           if(time){
             add();
