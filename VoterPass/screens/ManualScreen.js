@@ -6,32 +6,26 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
-
+import { Button, ThemeProvider } from 'react-native-elements';
+import styles from '../Styling'
 
 function ManualScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <Text>Type Voter's name here</Text>
+        <CustomHeader/>
+        <Text style={styles.text}>Type Voter's name here</Text>
         <Button
         title="Save"
+        style={styles.button}
         />
         <StatusBar style="auto" />
         <Button 
         title="Calculate Return Time"
+        style={styles.button}
         onPress={() => navigation.navigate('Final')}
         />
       </View>
     )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default ManualScreen;

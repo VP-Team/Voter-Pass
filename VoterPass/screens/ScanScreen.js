@@ -6,12 +6,15 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button, ThemeProvider } from 'react-native-elements';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 
 function ScanScreen({ navigation }) {
     return (
       <View style={styles.container}>
+        <CustomHeader/>
         <Text>Voter's Name:</Text>
         <StatusBar style="auto" />
         <Button 
@@ -21,14 +24,5 @@ function ScanScreen({ navigation }) {
       </View>
     )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default ScanScreen;

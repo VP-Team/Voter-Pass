@@ -6,8 +6,11 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native';
+import { Button, ThemeProvider } from 'react-native-elements';
+import { ScrollView, Dimensions } from 'react-native';
 import * as SQLite from 'expo-sqlite';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 const db = SQLite.openDatabase("voter.db");
 
@@ -36,40 +39,38 @@ function Voters() {
   }
 
   return(
-    <View>
-      {voters.map(({ id, time}) => (
-        <Button key={id} title={id + " " + time} titleStyle={{
-          color : "black", fontSize : 8
-        }} onPress={() => handleClick(id)}></Button>
-      ))}
-    </View>
+
+      <ScrollView style={styles.listItem}>
+        <View style={styles.container}>
+          {voters.map(({ id, time}) => (
+            <View style={styles.card}>
+
+              <Text style={styles.text}>Time: {time}</Text>
+              <Text style={styles.text}>Id: {id}</Text>
+              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
+
+            </View>
+          ))}
+        </View>
+      </ScrollView>
   );
 }
+
+
 
 function ViewListScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <Text>View List</Text>
+        <CustomHeader/>
+        <Text style={styles.text}>View List</Text>
         <Voters></Voters>
-        {/* <Button 
+        {<Button 
         title="New Voter"
+        style={styles.button}
         onPress={() => navigation.navigate('New')}
-        /> */}
+        />}
       </View>
     )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    Button: {
-      color : "black",
-      fontSize : 12
-    }
-  });
 
   export default ViewListScreen;

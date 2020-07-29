@@ -8,35 +8,28 @@ import {
     ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native';
+import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 
 function HomeScreen({ navigation }) {
 
     return (
       <View style={styles.container}>
-        
-        <ImageBackground style={{width: 300,
-                       height:300}}
-        source={require('../assets/logo.png')}
-        />
+        <CustomHeader/>
+        <Text style={styles.text}>Preferred # of voters in line:</Text>
+        <Text style={styles.text}>Average voting time:</Text>
+        <Divider style={{ backgroundColor: 'blue' }} />
+        <StatusBar style="auto" />
         <Button
         title="Next"
-        color="orange"
-        onPress={() => navigation.navigate('Next')}
+        style={styles.button}
+        onPress={() => navigation.navigate('Main')}
         />
         
       </View>
     );
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default HomeScreen;

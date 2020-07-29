@@ -9,13 +9,13 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button, ThemeProvider } from 'react-native-elements';
 import QRCode from '../components/QRCode';
 import { BaseRouter } from '@react-navigation/native';
 import ViewShot from 'react-native-view-shot';
 import * as Print from 'expo-print';
-
-
+import { CustomHeader } from '../components/CustomHeader';
+import styles from '../Styling'
 
 function FinalScreen({ route, navigation }) {
   
@@ -48,10 +48,10 @@ print = async() =>{
 
     <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'
     , quality:0.9}}>
-          <Text>FINAL</Text>
+       <Text style={styles.text}>FINAL</Text>
         <QRCode id = {ID}></QRCode>
-        <Text>Voter's ID: {ID}</Text>
-        <Text>Return Time: {time}</Text>
+        <Text style={styles.text}>Voter's ID: {ID}</Text>
+        <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
         <Button
         title={"Print"}
@@ -62,7 +62,7 @@ print = async() =>{
         />
         <Button 
           title={"Home"}
-          onPress={() => navigation.navigate('Next')}
+          onPress={() => navigation.navigate('Main')}
         />
         
       </ViewShot>
@@ -71,14 +71,5 @@ print = async() =>{
       
       )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default FinalScreen;
