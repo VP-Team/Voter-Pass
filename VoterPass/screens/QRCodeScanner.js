@@ -27,10 +27,12 @@ export default function QRCodeScaner() {
                   for(var i=0; i<rows._array.length; i++){
                     if(data === rows._array[i].id){
                      setIdIsValid(true);
+                     return true;
                      break;
                     } 
 
                   }
+                  return false;
               }       
           );
       }
@@ -38,8 +40,9 @@ export default function QRCodeScaner() {
  }
  
   const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
     checkValidId(data);
+    setScanned(true);
+    
     if(idIsValid == true){
     alert(`Bar code with type ${type} and data ${data} is a Valid Id`);
     console.log("Valid ID Scanned.")

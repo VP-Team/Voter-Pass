@@ -1,24 +1,31 @@
 import React from 'react';
 import {
     View,
+    Image,
     Text,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
+    ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native';
+
 
 function HomeScreen({ navigation }) {
 
     return (
       <View style={styles.container}>
-        <Text>Preferred # of voters in line</Text>
-        <Text>Average voting time</Text>
-        <StatusBar style="auto" />
+        
+        <ImageBackground style={{width: 300,
+                       height:300}}
+        source={require('../assets/logo.png')}
+        />
         <Button
         title="Next"
+        color="orange"
         onPress={() => navigation.navigate('Next')}
         />
+        
       </View>
     );
   }
