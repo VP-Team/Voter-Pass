@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider } from 'react-native-elements';
+import { ScrollView, Dimensions } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling'
@@ -38,15 +39,24 @@ function Voters() {
   }
 
   return(
-    <View>
-      {voters.map(({ id, time}) => (
-        <Button key={id} title={id + " " + time} titleStyle={{
-          color : "black", fontSize : 8
-        }} onPress={() => handleClick(id)}></Button>
-      ))}
-    </View>
+
+      <ScrollView style={styles.listItem}>
+        <View style={styles.container}>
+          {voters.map(({ id, time}) => (
+            <View style={styles.card}>
+
+              <Text style={styles.text}>Time: {time}</Text>
+              <Text style={styles.text}>Id: {id}</Text>
+              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
+
+            </View>
+          ))}
+        </View>
+      </ScrollView>
   );
 }
+
+
 
 function ViewListScreen({ navigation }) {
     return (

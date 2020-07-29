@@ -29,13 +29,20 @@ function MainScreen({ navigation }) {
         onPress={() => navigation.navigate('View List')}
         />
         <Button 
+        title="QR Scanner"
+        onPress={()=> navigation.navigate('QRCodeScanner')}
+        />
+        <Button 
         title="List Settings"
         style={styles.button}
         onPress={() => navigation.navigate('Settings')}
         />
+        <Button 
+        title="Help"
+        onPress={() => navigation.navigate('Help')}
+        />
       </View>
     )
   }
-
 
   export default MainScreen;

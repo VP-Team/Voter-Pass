@@ -10,7 +10,7 @@ import { registerScreens } from './screens/Screens';
 import { Navigation } from 'react-native-navigation';
 import HomeScreen from './screens/HomeScreen';
 import MainScreen from './screens/MainScreen';
-import NewScreen from './screens/NewScreen';
+import NewVoterScreen from './screens/NewVoterScreen';
 import ScanScreen from './screens/ScanScreen';
 import ManualScreen from './screens/ManualScreen';
 import ViewListScreen from './screens/ViewListScreen';
@@ -23,6 +23,8 @@ import Drawer from 'react-native-drawer';
 //import { Button } from '@material-ui/core';
 //import 'fontsource-roboto';
 
+import QRCodeScannerScreen from './screens/QRCodeScanner';
+import HelpScreen from './screens/HelpScreen'
 //import { Button } from './components/Button'
 
 registerScreens();
@@ -39,12 +41,14 @@ function NavScreens() {
     }}
     >
         <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="New" component={NewScreen} />
+        <Stack.Screen name="New" component={NewVoterScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
         <Stack.Screen name="Manual" component={ManualScreen} />
         <Stack.Screen name="View List" component={ViewListScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Final" component={FinalScreen} />
+        <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
+        <Stack.Screen name="Help" component={HelpScreen} />
       </Stack.Navigator>
   )
 }
@@ -64,10 +68,14 @@ function App() {
   React.useEffect(() => {
     db.transaction(tx => {
       //tx.executeSql("DROP TABLE IF EXISTS VOTER");
-      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text);");
+      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text, check_in integer);");
     });
   }, [])
   //const scheme = useColorScheme();
+  const devFlag = Expo.Constants.manifest.dev_flag
+    if (devFlag){
+      //Load some testing data
+    } 
   return (
     <NavigationContainer>
       <NavScreens/>

@@ -12,5 +12,18 @@ export default StyleSheet.create({
     text: {
       fontSize: 30,
       padding: 30
+    },
+    listItem:{
+      height:"95%",
+      width:"100%",
+
+    },
+    card:{
+      height: Dimensions.get('window').height / 10,
+      width:"90%",
+      backgroundColor:"white",
+      borderRadius:10,
+      justifyContent:"center",
+      margin: 3,
     }
   });

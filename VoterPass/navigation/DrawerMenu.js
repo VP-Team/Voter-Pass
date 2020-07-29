@@ -9,7 +9,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/HomeScreen';
-import NewScreen from '../screens/NewScreen';
+import NewScreen from '../screens/NewVoterScreen';
 import MainScreen from '../screens/MainScreen';
 import ViewListScreen from '../screens/ViewListScreen';
 import SettingsScreen from '../screens/SettingsScreen';
