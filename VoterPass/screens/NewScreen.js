@@ -8,10 +8,13 @@ import {
     Alert
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native';
+import { Button, ThemeProvider } from 'react-native-elements';
 import uuid from 'react-native-uuid';
 import * as SQLite from 'expo-sqlite';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import CustomButton from '../components/CustomButton';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 const db = SQLite.openDatabase("voter.db");
 
@@ -68,8 +71,11 @@ function NewScreen({ navigation }) {
 
     return (
       <View style={styles.container}>
-        <Text>New Voter information</Text>
-        <Button title="Select Time" onPress={showTimePicker} />
+        <CustomHeader/>
+        <Text style={styles.text}>New Voter information</Text>
+        <Button title="Select Time"
+        onPress={showTimePicker}
+        style={styles.button} />
         <DateTimePickerModal
           isVisible={isTimePickerVisible}
           mode="time"
@@ -81,6 +87,7 @@ function NewScreen({ navigation }) {
         {show && <Text>Vote Time: {time}</Text>}
         <Button 
           title="Add New Voter"
+          style={styles.button}
           onPress={() => {
             if(time){
               add();
@@ -100,13 +107,6 @@ function NewScreen({ navigation }) {
     return [() => setValue(value + 1), value];
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
+
 
   export default NewScreen;

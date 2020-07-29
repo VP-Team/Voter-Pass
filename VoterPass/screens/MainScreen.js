@@ -6,37 +6,36 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button, ThemeProvider, Header } from 'react-native-elements';
+import HomeScreen from './HomeScreen';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling';
 
 
-function NextScreen({ navigation }) {
+function MainScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <Text>Next with Options below</Text>
+        <CustomHeader/>
+        <Text style={styles.text}>Menu</Text>
         <StatusBar style="auto" />
         <Button 
         title="New Voter"
+        style={styles.button}
         onPress={() => navigation.navigate('New')}
         />
         <Button 
         title="View List"
-        onPress={() => navigation.navigate('ViewList')}
+        style={styles.button}
+        onPress={() => navigation.navigate('View List')}
         />
         <Button 
         title="List Settings"
+        style={styles.button}
         onPress={() => navigation.navigate('Settings')}
         />
       </View>
     )
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
-  export default NextScreen;
+  export default MainScreen;

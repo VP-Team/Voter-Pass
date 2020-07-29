@@ -1,0 +1,79 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add react-native-paper --save
+
+PATH: 
+  /usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/zackgalpern/.npm-global/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  14.2.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141375:19)
+      at Object.onceWrapper (events.js:421:28)
+      at ClientRequest.emit (events.js:315:20)
+      at TLSSocket.emitRequestTimeout (_http_client.js:761:9)
+      at Object.onceWrapper (events.js:421:28)
+      at TLSSocket.emit (events.js:327:22)
+      at TLSSocket.Socket._onTimeout (net.js:480:8)
+      at listOnTimeout (internal/timers.js:549:17)
+      at processTimers (internal/timers.js:492:7)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@material-ui/core": "^4.11.0",
+      "@material-ui/icons": "^4.9.1",
+      "@react-native-community/datetimepicker": "2.4.0",
+      "@react-native-community/masked-view": "0.1.10",
+      "@react-navigation/drawer": "^5.8.5",
+      "@react-navigation/native": "^5.7.0",
+      "@react-navigation/stack": "^5.7.0",
+      "buffer": "^5.6.0",
+      "expo": "~38.0.8",
+      "expo-random": "~8.2.1",
+      "expo-sqlite": "~8.2.1",
+      "expo-status-bar": "^1.0.2",
+      "fontsource-roboto": "^2.2.6",
+      "i": "^0.3.6",
+      "react": "~16.11.0",
+      "react-dom": "~16.11.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.1.tar.gz",
+      "react-native-appearance": "~0.3.3",
+      "react-native-gesture-handler": "~1.6.0",
+      "react-native-modal-datetime-picker": "^8.7.1",
+      "react-native-navigation": "^6.9.1",
+      "react-native-qrcode-svg": "^6.0.6",
+      "react-native-reanimated": "~1.9.0",
+      "react-native-safe-area-context": "~3.0.7",
+      "react-native-screens": "~2.9.0",
+      "react-native-svg": "^9.6.4",
+      "react-native-uuid": "^1.4.9",
+      "react-native-web": "~0.11.7"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.8.6",
+      "babel-preset-expo": "~8.1.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

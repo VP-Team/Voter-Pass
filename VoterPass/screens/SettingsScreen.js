@@ -6,27 +6,29 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button, ThemeProvider } from 'react-native-elements';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 
 function SettingsScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <Text>Settings</Text>
+        <CustomHeader/>
+        <Text style={styles.text}>Settings</Text>
         <StatusBar style="auto" />
-        <Text>Edit people in line</Text>
-        <Text>Edit time average</Text>
+        <Button 
+        title="Edit People in Line"
+        style={styles.button}
+        //onPress={() => navigation.navigate('Final')}
+        />
+        <Button 
+        title="Edit Time Average"
+        style={styles.button}
+        //onPress={() => navigation.navigate('Final')}
+        />
       </View>
     )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default SettingsScreen;
