@@ -43,12 +43,12 @@ function Voters() {
       <ScrollView style={styles.listItem}>
         <View style={styles.container}>
           {voters.map(({ id, time}) => (
-           <>
+           <View style={styles.card}>
 
-              <Text style={styles.text}>Time: {time}</Text>
-              <Text style={styles.text}>Id: {id}</Text>
+              <Text style={styles.text}>Id: {id} Time: {time}</Text>
+              <Text style={styles.text}></Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
-</>
+              </View>
             
           ))}
         </View>

@@ -10,8 +10,8 @@ export default StyleSheet.create({
       padding: 20
     },
     text: {
-      fontSize: 30,
-      padding: 30,
+      fontSize: 15,
+      padding: 1,
     },
     listItem:{
       height:"95%",
@@ -20,11 +20,12 @@ export default StyleSheet.create({
       
     },
     card:{
-      height: Dimensions.get('window').height / 10,
+      height: Dimensions.get('window').height / 5,
       width:"90%",
       backgroundColor:"white",
       borderRadius:10,
+      borderColor: "black",
       justifyContent:"center",
-      margin: 3,
+      margin: 1,
     }
   });
