@@ -32,7 +32,8 @@ print = async() =>{
 
     const imageData = 'data:image/png;base64,' + data;
     const pixels = 1080/PixelRatio.get();
-    let html = `<img src="${imageData}" width="100%" style="border:2px solid black; height:${pixels}px; width:${pixels}px;" />`;
+    let html = `<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
+    <img src="${imageData}" width="100%" style="border:2px solid black; height:${pixels/2}px; width:${pixels/2}px;" />`;
     const pdf = await Print.printToFileAsync({ html });
     
    console.log('the pdf i got back was ', pdf)
@@ -52,15 +53,17 @@ print = async() =>{
   let ID = route.params.ID;
   let time = route.params.time;
   return (
-
+<>
     <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'
     , quality:0.9}}>
-       <Text style={styles.text}>FINAL</Text>
+       <Text style={styles.text}>Confirmation Page</Text>
         <QRCode id = {ID}></QRCode>
-        <Text style={styles.text}>Voter ID: {ID}</Text>
         <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
-        <Button
+
+      </ViewShot>
+     <View style={styles.container}>
+     <Button
         title={"Print"}
         onPress={async ()=> {
            print();
@@ -72,10 +75,9 @@ print = async() =>{
           onPress={() => navigation.navigate('Main')}
         />
         
-      </ViewShot>
-     
+     </View>
       
-      
+      </>
       )
   }
 
