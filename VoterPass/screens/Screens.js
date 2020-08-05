@@ -13,5 +13,6 @@ export function registerScreens() {
     Navigation.registerComponent('Settings', () => require('./SettingsScreen').default);
     Navigation.registerComponent('QRCodeScanner',() => require('./QRCodeScanner').default)
     Navigation.registerComponent('Final', () => require('./FinalScreen').default);
+    Navigation.registerComponent('CustomHeader', () => require('../components/CustomHeader').default);
     Navigation.registerComponent('Help', () => require('./HelpScreen').default);
 }

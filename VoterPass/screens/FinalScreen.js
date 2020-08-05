@@ -6,19 +6,21 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button } from 'react-native'
+import { Button, ThemeProvider } from 'react-native-elements';
 import QRCode from '../components/QRCode';
 import { BaseRouter } from '@react-navigation/native';
+import { CustomHeader } from '../components/CustomHeader';
+import styles from '../Styling'
 
 function FinalScreen({ route, navigation }) {
   let ID = route.params.ID;
   let time = route.params.time;
-  return (
+  return ( //<CustomHeader /> removed -- fixed the 'Add New Voter' button error
       <View style={styles.container}>
-        <Text>FINAL</Text>
+        <Text style={styles.text}>FINAL</Text>
         <QRCode id = {ID}></QRCode>
-        <Text>Voter's ID: {ID}</Text>
-        <Text>Return Time: {time}</Text>
+        <Text style={styles.text}>Voter's ID: {ID}</Text>
+        <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
         <Button 
           title={"Home"}
@@ -27,14 +29,5 @@ function FinalScreen({ route, navigation }) {
       </View>
     )
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default FinalScreen;

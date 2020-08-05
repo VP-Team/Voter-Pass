@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import * as SQLite from 'expo-sqlite';
 import React from 'react';
-import { StyleSheet, Text, View, Button, useColorScheme } from 'react-native';
+import { StyleSheet, Text, View, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -16,6 +16,13 @@ import ManualScreen from './screens/ManualScreen';
 import ViewListScreen from './screens/ViewListScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import FinalScreen from './screens/FinalScreen';
+import CustomHeader from './components/CustomHeader';
+import DrawerMenu from './navigation/DrawerMenu';
+import Drawer from 'react-native-drawer';
+//import Button from './components/Button';
+//import { Button } from '@material-ui/core';
+//import 'fontsource-roboto';
+
 import QRCodeScannerScreen from './screens/QRCodeScanner';
 import HelpScreen from './screens/HelpScreen'
 //import { Button } from './components/Button'
@@ -25,6 +32,26 @@ registerScreens();
 const db = SQLite.openDatabase("voter.db");
 
 const Stack = createStackNavigator();
+
+function NavScreens() {
+  return(
+    <Stack.Navigator 
+    screenOptions={{
+      headerShown: false
+    }}
+    >
+        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="New" component={NewVoterScreen} />
+        <Stack.Screen name="Scan" component={ScanScreen} />
+        <Stack.Screen name="Manual" component={ManualScreen} />
+        <Stack.Screen name="View List" component={ViewListScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Final" component={FinalScreen} />
+        <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
+        <Stack.Screen name="Help" component={HelpScreen} />
+      </Stack.Navigator>
+  )
+}
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
@@ -51,20 +78,11 @@ function App() {
     } 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="NewVoter" component={NewVoterScreen} />
-        <Stack.Screen name="Scan" component={ScanScreen} />
-        <Stack.Screen name="Manual" component={ManualScreen} />
-        <Stack.Screen name="ViewList" component={ViewListScreen} />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
-        <Stack.Screen name="Final" component={FinalScreen} />
-        <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
-        <Stack.Screen name="Help" component={HelpScreen} />
-      </Stack.Navigator>
+      <NavScreens/>
     </NavigationContainer>
   )
 }
+
+
 
 export default App;

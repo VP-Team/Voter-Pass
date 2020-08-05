@@ -6,8 +6,11 @@ import {
     AsyncStorage
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button, ScrollView, Dimensions } from 'react-native';
+import { Button, ThemeProvider } from 'react-native-elements';
+import { ScrollView, Dimensions } from 'react-native';
 import * as SQLite from 'expo-sqlite';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 const db = SQLite.openDatabase("voter.db");
 
@@ -57,41 +60,17 @@ function Voters() {
 
 function ViewListScreen({ navigation }) {
     return (
-      <View>
+      <View style={styles.container}>
+        <CustomHeader/>
         <Text style={styles.text}>View List</Text>
         <Voters></Voters>
-        {/* <Button 
+        {<Button 
         title="New Voter"
+        style={styles.button}
         onPress={() => navigation.navigate('New')}
-        /> */}
+        />}
       </View>
     )
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      alignItems:"center",
-    },
-    listItem:{
-      height:"95%",
-      width:"100%",
-
-    },
-    card:{
-      height: Dimensions.get('window').height / 10,
-      width:"90%",
-      backgroundColor:"white",
-      borderRadius:10,
-      justifyContent:"center",
-      margin: 3,
-    },
-    text: {
-      justifyContent: 'center',
-      textAlign:"center",
-      color : "black", 
-      fontSize : 15,
-    }
-  });
-  
   export default ViewListScreen;
