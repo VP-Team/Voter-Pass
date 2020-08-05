@@ -52,17 +52,11 @@ print = async() =>{
 
   let ID = route.params.ID;
   let time = route.params.time;
-<<<<<<< HEAD
-  return ( //<CustomHeader /> removed -- fixed the 'Add New Voter' button error
-      <View style={styles.container}>
-        <Text style={styles.text}>FINAL</Text>
-=======
   return (
 <>
     <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'
     , quality:0.9}}>
        <Text style={styles.text}>Confirmation Page</Text>
->>>>>>> Printing
         <QRCode id = {ID}></QRCode>
         <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
