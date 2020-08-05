@@ -41,10 +41,10 @@ function NavScreens() {
     }}
     >
         <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="New" component={NewVoterScreen} />
+        <Stack.Screen name="NewVoter" component={NewVoterScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />
         <Stack.Screen name="Manual" component={ManualScreen} />
-        <Stack.Screen name="View List" component={ViewListScreen} />
+        <Stack.Screen name="ViewList" component={ViewListScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Final" component={FinalScreen} />
         <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
