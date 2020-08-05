@@ -12,17 +12,12 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider } from 'react-native-elements';
 import QRCode from '../components/QRCode';
 import { BaseRouter } from '@react-navigation/native';
-<<<<<<< HEAD
-import { CustomHeader } from '../components/CustomHeader';
-import styles from '../Styling'
-=======
 import ViewShot from 'react-native-view-shot';
 import * as Print from 'expo-print';
 import { CustomHeader } from '../components/CustomHeader';
 import styles from '../Styling';
 import * as FileSystem from 'expo-file-system';
 
->>>>>>> Printing
 
 function FinalScreen({ route, navigation }) {
   
