@@ -22,7 +22,7 @@ const QRCodeMaker= (props) => {
           //size of QR Code
           size={250}
           //Color of the QR Code (Optional)
-          color="blue"
+          color="black"
           //Background Color of the QR Code (Optional)
           backgroundColor="white"
         />

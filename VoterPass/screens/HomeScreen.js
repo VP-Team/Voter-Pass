@@ -1,14 +1,17 @@
 import React from 'react';
 import {
     View,
+    Image,
     Text,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
+    ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
 import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling'
+
 
 function HomeScreen({ navigation }) {
 
@@ -24,6 +27,7 @@ function HomeScreen({ navigation }) {
         style={styles.button}
         onPress={() => navigation.navigate('Main')}
         />
+        
       </View>
     );
   }
