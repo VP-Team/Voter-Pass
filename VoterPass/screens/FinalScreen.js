@@ -53,30 +53,26 @@ print = async() =>{
   let ID = route.params.ID;
   let time = route.params.time;
   return (
-<>
-    <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'
+    <>
+    <ViewShot style={styles.qrcontainer} ref={viewShotRef} options={{format:'png'
     , quality:0.9}}>
        <Text style={styles.text}>Confirmation Page</Text>
         <QRCode id = {ID}></QRCode>
         <Text style={styles.text}>Return Time: {time}</Text>
         <StatusBar style="auto" />
-
-      </ViewShot>
-     <View style={styles.container}>
-     <Button
-        title={"Print"}
-        onPress={async ()=> {
-           print();
-           
-        }}
+        <Button 
+          style={{padding : 10, width: 300}}
+          title={"Print"}
+          onPress={async ()=> {print();}
+        }
         />
         <Button 
+          style={{padding : 10, width: 300}}
           title={"Home"}
           onPress={() => navigation.navigate('Main')}
         />
-        
-     </View>
-      
+
+      </ViewShot>
       </>
       )
   }

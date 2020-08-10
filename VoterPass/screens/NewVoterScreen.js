@@ -77,7 +77,7 @@ function NewScreen({ navigation }) {
     return (
       <View style={styles.container}>
       <CustomHeader/>
-      <Text style={styles.text}>New Voter information</Text>
+      <Text style={{fontSize: 35}}>New Voter Information</Text>
       <Button title="Select Time" style={styles.button} onPress={showTimePicker} />
       <DateTimePickerModal
         isVisible={isTimePickerVisible}

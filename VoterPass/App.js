@@ -36,9 +36,9 @@ const Stack = createStackNavigator();
 function NavScreens() {
   return(
     <Stack.Navigator 
-    screenOptions={{
-      headerShown: false
-    }}
+      screenOptions={{
+        headerShown: false
+      }}
     >
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="NewVoter" component={NewVoterScreen} />
@@ -49,7 +49,7 @@ function NavScreens() {
         <Stack.Screen name="Final" component={FinalScreen} />
         <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
         <Stack.Screen name="Help" component={HelpScreen} />
-      </Stack.Navigator>
+    </Stack.Navigator>
   )
 }
 
@@ -67,7 +67,7 @@ function App() {
   /* On render of app component, voter table in database will be created if it does not exist */
   React.useEffect(() => {
     db.transaction(tx => {
-      tx.executeSql("DROP TABLE IF EXISTS VOTER");
+      //tx.executeSql("DROP TABLE IF EXISTS VOTER");
       tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text, check_in integer);");
     });
   }, [])

@@ -11,21 +11,30 @@ import { ScrollView, Dimensions } from 'react-native';
 import * as SQLite from 'expo-sqlite';
 import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling'
+import { Divider } from 'react-native-elements'
 
 const db = SQLite.openDatabase("voter.db");
 
 function Voters() {
-  const [voters, setVoters] = React.useState([]);
+  const [uncheckedVoters, setUncheckedVoters] = React.useState([]);
+  const [checkedVoters, setCheckedVoters] = React.useState([]);
   React.useEffect(() => {
     db.transaction(tx => {
       tx.executeSql(
-        "SELECT * FROM voter;",[],
-        (_, { rows: { _array } }) => setVoters(_array));
+        "SELECT * FROM voter WHERE check_in=0;",[],
+        (_, { rows: { _array } }) => setUncheckedVoters(_array));
+      tx.executeSql(
+        "SELECT * FROM voter WHERE check_in=1;",[],
+        (_, { rows: { _array } }) => setCheckedVoters(_array));
     })
   }, [])
 
-  if (voters === null || voters.length === 0) {
-    return null;
+  if (uncheckedVoters === null || uncheckedVoters.length === 0) 
+  {
+    if(checkedVoters === null || checkedVoters.length === 0)
+    {
+      return null;
+    }
   }
 
   const handleClick = (id) => {
@@ -33,43 +42,51 @@ function Voters() {
       tx.executeSql(
         "DELETE FROM voter WHERE id=?;", [id]);
       tx.executeSql(
-        "SELECT * FROM voter;",[],
-        (_, { rows: { _array } }) => setVoters(_array));
+        "SELECT * FROM voter WHERE check_in=0;",[],
+        (_, { rows: { _array } }) => setUncheckedVoters(_array));
+      tx.executeSql(
+        "SELECT * FROM voter WHERE check_in=1;",[],
+        (_, { rows: { _array } }) => setCheckedVoters(_array));
    })
   }
 
   return(
-
       <ScrollView style={styles.listItem}>
-        <View style={styles.container}>
-          {voters.map(({ id, time}) => (
-           <View style={styles.card}>
-
+        {(checkedVoters.length > 0) && <View style={styles.container}>
+          <Text>Checked In</Text>
+          {checkedVoters.map(({ id, time}) => (
+            <View style={styles.card}>
               <Text style={styles.text}>Id: {id} Time: {time}</Text>
               <Text style={styles.text}></Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
-              </View>
-            
+            </View>
           ))}
+        </View>}
+        <View style={styles.container}>
+          <Text>Unchecked In</Text>
+          {uncheckedVoters.map(({ id, time}) => (
+            <View style={styles.card}>
+              <Text style={{fontSize: 15}}>Id: {id}</Text>
+              <Text style={{fontSize: 15}}>Time: {time}</Text>
+              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
+            </View>
+          ))}
+
         </View>
       </ScrollView>
-      
   );
 }
-
-
 
 function ViewListScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
-        <Text style={styles.text}>View List</Text>
         <Voters></Voters>
-        {<Button 
+        <Button 
         title="New Voter"
         style={styles.button}
-        onPress={() => navigation.navigate('New')}
-        />}
+        onPress={() => navigation.navigate('NewVoter')}
+        />
       </View>
     )
   }
