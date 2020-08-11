@@ -7,7 +7,8 @@ export default StyleSheet.create({
       justifyContent: 'center',
     },
     button: {
-      padding: 20
+      padding: 20,
+      width: 300
     },
     text: {
       fontSize: 15,
@@ -49,5 +50,19 @@ export default StyleSheet.create({
       padding: 8,
       margin: 10,
       width: 200
+    },
+    pic: {
+      borderRadius: 8,
+    },
+    description: {
+      fontSize: 50,
+      marginTop: '10%',
+      textAlign: 'center',
+      width: '100%',
+      color: '#2b8cd8'
+    },
+    QROverlay: {
+      width: '100%',
+      height: '50%'
     }
   });

@@ -13,16 +13,17 @@ import NewScreen from '../screens/NewVoterScreen';
 import MainScreen from '../screens/MainScreen';
 import ViewListScreen from '../screens/ViewListScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import QRCodeScanner from '../screens/QRCodeScanner';
 import Icon from 'react-native-vector-icons';
 
 const Drawer = createDrawerNavigator();
-
 
 function DrawerMenu({ navigation }) {
     return(
         <Drawer.Navigator drawerType='slide' >
             <Drawer.Screen name='Home' component={MainScreen} />
-            <Drawer.Screen name='New Voter' component={NewScreen} />
+            <Drawer.Screen name='Create New Voter' component={NewScreen} />
+            <Drawer.Screen name='QR Code Scanner' component={QRCodeScanner} />
             <Drawer.Screen name='View List' component={ViewListScreen} />
             <Drawer.Screen name='Settings' component={SettingsScreen} />
         </Drawer.Navigator>

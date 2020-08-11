@@ -12,7 +12,9 @@ import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
 import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling'
 import { TextInput } from 'react-native-gesture-handler';
-
+import Logo from '../VPLogo.png';
+import Video from 'react-native-video';
+import LogoVideo from '../VP Splash.mp4'
 
 function HomeScreen({ navigation }) {
 
@@ -20,6 +22,9 @@ function HomeScreen({ navigation }) {
       <View style={styles.container}>
         <CustomHeader/>
         <Text style={styles.headerText}>Welcome to VoterPass!</Text>
+        <Image style={styles.pic} source={Logo}></Image>
+        <Text></Text>
+        <Text></Text>
         <Text style={styles.text}>Enter average voting time:</Text>
         <Divider style={{ backgroundColor: 'blue' }} />
         <StatusBar style="auto" />

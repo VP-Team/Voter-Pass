@@ -24,16 +24,22 @@ import Splash from './screens/SplashScreen';
 //import Button from './components/Button';
 //import { Button } from '@material-ui/core';
 //import 'fontsource-roboto';
-
 import QRCodeScannerScreen from './screens/QRCodeScanner';
 import HelpScreen from './screens/HelpScreen'
+import Logo from './VPLogo.png';
+import Video from 'react-native-video';
+import LogoVideo from'./VP Splash.mp4';
 //import { Button } from './components/Button'
+import { mdiArrowLeftBoldOutline } from '@mdi/js';
 
 registerScreens();
 
 const db = SQLite.openDatabase("voter.db");
 
+
 const Stack = createStackNavigator();
+
+//<Stack.Screen name="Drawer" component={DrawerMenu} />
 
 function NavScreens() {
   return(

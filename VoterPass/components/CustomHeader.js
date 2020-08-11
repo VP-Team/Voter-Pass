@@ -12,6 +12,7 @@ import { DrawerMenu } from '../navigation/DrawerMenu';
 import { HeaderBackButton } from '@react-navigation/stack';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
+//import { mdiArrowLeftBoldOutline } from '@mdi/js';
 
 
 function CustomHeader() {
@@ -20,9 +21,9 @@ function CustomHeader() {
     return (
             <Header name='CustomHeader'
             leftComponent={{
-            icon: 'list',
+            icon: 'arrow-back',
             color: 'white',
-            onPress: () => alert('FUCK')
+            onPress: () => navigation.goBack()
             }}
             centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
             rightComponent={{ 
