@@ -42,9 +42,14 @@ function NewScreen({ route, navigation }) {
       route.params.setLastTime(returnTime); // when the next voter should comeback
  
       var date = new Date(returnTime);
-      
       var formattedTime = date.toLocaleTimeString("en-US");
+      
+      if(0<(date.getHours()%12) && (date.getHours()%12) < 10){
+        formattedTime ='0' + formattedTime.substring(0,4) + formattedTime.substring(7,10);
+      }
+      else{
       formattedTime = formattedTime.substring(0,5) + formattedTime.substring(8,11);
+      }
 
       console.log(formattedTime);
       

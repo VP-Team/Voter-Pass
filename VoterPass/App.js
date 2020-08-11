@@ -51,7 +51,7 @@ function NavScreens() {
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Final" component={FinalScreen} />
         <Stack.Screen name="QRCodeScanner" component={QRCodeScannerScreen} />
-        <Stack.Screen name="Help" component={HelpScreen} />
+        {/*<Stack.Screen name="Help" component={HelpScreen} />*/}
     </Stack.Navigator>
   )
 }

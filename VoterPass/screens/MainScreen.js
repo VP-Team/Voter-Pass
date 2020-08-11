@@ -34,17 +34,12 @@ function MainScreen({ navigation }) {
         <Button 
         title="QR Scanner"
         style={styles.button}
-        onPress={()=> navigation.navigate('QRCodeScanner', {"votingTime": votingTime})}
+        onPress={()=> navigation.navigate('QRCodeScanner')}
         />
         <Button 
         title="List Settings"
         style={styles.button}
         onPress={() => navigation.navigate('Settings', {"votingTime": votingTime, "setVotingTime": setVotingTime} )}
-        />
-        <Button 
-        title="Help"
-        style={styles.button}
-        onPress={() => navigation.navigate('Help')}
         />
       </View>
     )
