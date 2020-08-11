@@ -3,22 +3,22 @@ import {
     View,
     Text,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
+    ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button, ThemeProvider, Header } from 'react-native-elements';
+import { Button, ThemeProvider, Header, Image } from 'react-native-elements';
 import HomeScreen from './HomeScreen';
-import CustomHeader from '../components/CustomHeader';
+import CustomHeaderMain from '../components/CustomHeaderMain';
 import styles from '../Styling';
 
-
-function MainScreen({ navigation }) {
-  const [votingTime, setVotingTime] = React.useState(5);
+function MainScreen({route, navigation }) {
+  const [votingTime, setVotingTime] = React.useState(route.params.initalVoteTime);
   const [lastTime, setLastTime] = React.useState(new Date().getTime());
   console.log(lastTime);
     return (
-      <View>
-        <CustomHeader/>
+      <View style={styles.container}>
+        <CustomHeaderMain/>
         <Text style={styles.headerText}>Menu</Text>
         <StatusBar style="auto" />
         <Button 
@@ -29,7 +29,7 @@ function MainScreen({ navigation }) {
         <Button 
         title="View List"
         style={styles.button}
-        onPress={() => navigation.navigate('ViewList')}
+        onPress={() => navigation.navigate('ViewList', { "lastTime": lastTime, "setLastTime": setLastTime, "votingTime": votingTime})}
         />
         <Button 
         title="QR Scanner"

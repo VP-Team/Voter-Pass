@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button, Alert } from 'react-native';
+import { Text, View, StyleSheet, Button, Alert, Image } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as SQLite from 'expo-sqlite';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling';
+import QRPic from '../QRTemp.png'
 
 const db = SQLite.openDatabase("voter.db");
 
@@ -122,10 +125,16 @@ export default function QRCodeScaner ({navigation}) {
         flexDirection: 'column',
         justifyContent: 'flex-end',
       }}>
+       
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
-      />
+        style={StyleSheet.absoluteFillObject}>
+        <CustomHeader/>
+        <Text style={styles.description}>Scan QR Code</Text>
+        <Image style={styles.QROverlay} source={QRPic}></Image>
+      </BarCodeScanner>
+      
+      
 
       {scanned && <Button title={'Tap to Rescan'} onPress={() => setScanned(false)} />}
     </View>

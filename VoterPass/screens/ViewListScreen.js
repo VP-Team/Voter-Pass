@@ -50,14 +50,27 @@ function Voters() {
    })
   }
 
+  const formatTime = (time) => {
+    var date = new Date(time);
+      var formattedTime = date.toLocaleTimeString("en-US");
+      
+      if(0<(date.getHours()%12) && (date.getHours()%12) < 10){
+        formattedTime ='0' + formattedTime.substring(0,4) + formattedTime.substring(7,10);
+      }
+      else{
+      formattedTime = formattedTime.substring(0,5) + formattedTime.substring(8,11);
+      }
+      return formattedTime;
+  }
+
   return(
       <ScrollView style={styles.listItem}>
         {(checkedVoters.length > 0) && <View style={styles.container}>
           <Text>Checked In</Text>
           {checkedVoters.map(({ id, time}) => (
             <View key={id} style={styles.card}>
-              <Text style={styles.text}>Id: {id} Time: {time}</Text>
-              <Text style={styles.text}></Text>
+              <Text style={{fontSize: 15}}>Id: {id}</Text>
+              <Text style={{fontSize: 15}}>Time: {formatTime(time)}</Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
             </View>
           ))}
@@ -67,7 +80,7 @@ function Voters() {
           {uncheckedVoters.map(({ id, time}) => (
             <View key={id} style={styles.card}>
               <Text style={{fontSize: 15}}>Id: {id}</Text>
-              <Text style={{fontSize: 15}}>Time: {time}</Text>
+              <Text style={{fontSize: 15}}>Time: {formatTime(time)}</Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
             </View>
           ))}
@@ -77,7 +90,7 @@ function Voters() {
   );
 }
 
-function ViewListScreen({ navigation }) {
+function ViewListScreen({ route , navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
@@ -86,7 +99,7 @@ function ViewListScreen({ navigation }) {
         {<Button 
         title="New Voter"
         style={styles.button}
-        onPress={() => navigation.navigate('NewVoter')}
+        onPress={() => navigation.navigate('NewVoter', { "lastTime": route.params.lastTime, "setLastTime": route.params.setLastTime, "votingTime": route.params.votingTime})}
         />}
       </View>
     )

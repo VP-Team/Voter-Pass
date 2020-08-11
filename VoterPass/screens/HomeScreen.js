@@ -5,38 +5,67 @@ import {
     Text,
     StyleSheet,
     AsyncStorage,
-    ImageBackground
+    ImageBackground,
+    Modal
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
-import CustomHeader from '../components/CustomHeader';
+import CustomHeaderFirst from '../components/CustomHeaderFirst';
+import {Picker} from '@react-native-community/picker';
 import styles from '../Styling'
 import { TextInput } from 'react-native-gesture-handler';
 
-
 function HomeScreen({ navigation }) {
+  const [isVotingTimeVisible, setVotingTimeVisibility] = React.useState(false);
+  const [votingTimeLocal, setVotingTimeLocal] = React.useState(5);
+  const minutes = ['5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
+  //<Image style={styles.pic} source={Logo}></Image>
 
+  const showTimePicker = () => {
+    setVotingTimeVisibility(true);
+  };
+
+  const handleSubmit = () => {
+    setVotingTimeLocal(votingTimeLocal);
+    setVotingTimeVisibility(false);
+  };
     return (
       <View style={styles.container}>
-        <CustomHeader/>
+        <CustomHeaderFirst/>
         <Text style={styles.headerText}>Welcome to VoterPass!</Text>
-        <Text style={styles.text}>Enter average voting time:</Text>
+        <Text></Text>
+        <Text></Text>
+        <Text style={styles.text}>Average Voting Time is: </Text>
+        <Text style={styles.text}>{votingTimeLocal} minutes</Text>
         <Divider style={{ backgroundColor: 'blue' }} />
         <StatusBar style="auto" />
-        <TextInput 
-        style={styles.input}
-        placeholder='Edit Average Time'
+        <Button 
+        title="Edit Time Average"
+        style={styles.button}
+        onPress={showTimePicker}
         />
-        <Text></Text>
-        <Text></Text>
-        <Text>Or click to go home</Text>
+        
+        <Modal visible={isVotingTimeVisible} >
+          <Picker
+          selectedValue={votingTimeLocal}
+          mode="dropdown"
+          onValueChange={itemValue => setVotingTimeLocal(parseInt(itemValue))}>
+            {minutes.map((item, index) => (
+              <Picker.Item label={item} value={parseInt(item)} key={index} />
+            ))}
+          </Picker>
+          <View style={styles.container}>
+          <Button style={styles.button}
+          title="Submit"
+          onPress={handleSubmit}
+          ></Button>
+          </View>
+        </Modal>
         <Button 
         style={styles.button}
-        title="Home"
-        onPress={() => navigation.navigate('Main')}
+        title="Next"
+        onPress={() => navigation.navigate('Main', {"initalVoteTime": votingTimeLocal})}
         />
-        
-        
       </View>
     );
   }

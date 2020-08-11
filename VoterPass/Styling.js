@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'; 
+import { StyleSheet, Dimensions, ImageBackground } from 'react-native'; 
 
 export default StyleSheet.create({
     container: {
@@ -56,5 +56,19 @@ export default StyleSheet.create({
       padding: 8,
       margin: 10,
       width: 200
-    }
+    },
+    pic: {
+      borderRadius: 8,
+    },
+    description: {
+      fontSize: 50,
+      marginTop: '10%',
+      textAlign: 'center',
+      width: '100%',
+      color: '#2b8cd8'
+    },
+    QROverlay: {
+      width: '100%',
+      height: '50%'
+    },
   });

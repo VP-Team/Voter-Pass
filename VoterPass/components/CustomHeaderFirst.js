@@ -20,11 +20,6 @@ function CustomHeader() {
 
     return (
             <Header name='CustomHeader'
-            leftComponent={{
-            icon: 'arrow-back',
-            color: 'white',
-            onPress: () => navigation.goBack()
-            }}
             centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
             rightComponent={{ 
             icon: 'home', 

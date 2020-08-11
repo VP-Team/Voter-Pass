@@ -79,30 +79,6 @@ function NewScreen({ route, navigation }) {
       setTimePickerVisibility(false);
     };
   
-    const handleConfirm = (time) => {
-      getLastTime();
-      console.log("A time has been picked: ", time);
-      let hours = time.getHours();
-      if(hours == 0)
-        hours = hours + 12;
-      if(hours > 12){
-        hours = hours - 12;
-        setM("PM");
-      }
-      hours = hours.toString();
-      
-      let min = time.getMinutes();
-      if(min < 10){
-        min = "0" + min.toString()
-      } else{
-        min = min.toString();
-      }
-      let new_time = hours + ":" + min + " " + m;
-      console.log(new_time);
-      setTime(new_time);
-      setShow(true);
-      hideTimePicker();
-    };
 
     return (
       

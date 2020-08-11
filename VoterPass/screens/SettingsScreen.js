@@ -26,7 +26,7 @@ function SettingsScreen({ route, navigation }) {
     setVotingTimeVisibility(false);
   };
 
-  const minutes = ['null', '5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
+  const minutes = ['5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'];
   const [votingTimeLocal, setVotingTimeLocal] = React.useState(route.params.votingTime);
   
     return (
@@ -35,11 +35,6 @@ function SettingsScreen({ route, navigation }) {
         <Text style={styles.text}>Settings</Text>
         <Text>Current voting time {votingTimeLocal}</Text>
         <StatusBar style="auto" />
-        <Button 
-        title="Edit People in Line"
-        style={styles.button}
-        //onPress={() => navigation.navigate('Final')}
-        />
         <Button 
         title="Edit Time Average"
         style={styles.button}
@@ -53,7 +48,7 @@ function SettingsScreen({ route, navigation }) {
           mode="dropdown"
           onValueChange={itemValue => setVotingTimeLocal(parseInt(itemValue))}>
             {minutes.map((item, index) => (
-              <Picker.Item label={item} value={item} key={index} />
+              <Picker.Item label={item} value={parseInt(item)} key={index} />
             ))}
           </Picker>
           <Button 

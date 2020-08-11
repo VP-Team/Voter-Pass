@@ -26,11 +26,6 @@ function CustomHeader() {
             onPress: () => navigation.goBack()
             }}
             centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
-            rightComponent={{ 
-            icon: 'home', 
-            color: 'white',
-            onPress: () => navigation.navigate('Main')
-            }}
             />
     )
 }
