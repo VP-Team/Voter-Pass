@@ -13,10 +13,12 @@ import styles from '../Styling';
 
 
 function MainScreen({ navigation }) {
+  const [votingTime, setVotingTime] = React.useState(null)
     return (
       <View style={styles.container}>
         <CustomHeader/>
         <Text style={styles.text}>Menu</Text>
+        <Text style={styles.text}>Average Voting Time (per person): {votingTime} min</Text>
         <StatusBar style="auto" />
         <Button 
         title="New Voter"
@@ -36,7 +38,7 @@ function MainScreen({ navigation }) {
         <Button 
         title="List Settings"
         style={styles.button}
-        onPress={() => navigation.navigate('Settings')}
+        onPress={() => navigation.navigate('Settings', {"votingTime": votingTime, "setVotingTime": setVotingTime} )}
         />
         <Button 
         title="Help"
