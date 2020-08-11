@@ -11,15 +11,25 @@ import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
 import { DrawerMenu } from '../navigation/DrawerMenu';
 import { HeaderBackButton } from '@react-navigation/stack';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 
-function CustomHeader({ navigation }) {
+function CustomHeader() {
+    const navigation = useNavigation();
+
     return (
-            <Header 
-                style={{alignContent: 'top'}}
-                name='CustomHeader'
-                leftComponent={DrawerMenu}
-                centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
+            <Header name='CustomHeader'
+            leftComponent={{
+            icon: 'list',
+            color: 'white',
+            onPress: () => alert('Diddly Dar Nit')
+            }}
+            centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
+            rightComponent={{ 
+            icon: 'home', 
+            color: 'white',
+            onPress: () => navigation.navigate('Main')
+            }}
             />
     )
 }

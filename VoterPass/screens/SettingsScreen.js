@@ -11,6 +11,7 @@ import { Button, ThemeProvider } from 'react-native-elements';
 import CustomHeader from '../components/CustomHeader';
 import {Picker} from '@react-native-community/picker';
 import styles from '../Styling'
+import { TextInput } from 'react-native-gesture-handler';
 
 
 function SettingsScreen({ route, navigation }) {

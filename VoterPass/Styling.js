@@ -20,6 +20,17 @@ export default StyleSheet.create({
       fontSize: 50,
       padding: 1,
     },
+    headerText: {
+      padding: 25,
+      textAlign: 'center',
+      fontSize: 30,
+      fontWeight: '500',
+      color: '#2b8cd8',
+    },
+    returnTime: {
+      fontSize: 35,
+      padding:10,
+    },
     listItem:{
       height:"95%",
       width:"100%",
@@ -32,5 +43,18 @@ export default StyleSheet.create({
       borderColor: "black",
       justifyContent:"center",
       margin: 1,
+    },
+    QR: {
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 30,
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: 'black',
+      padding: 8,
+      margin: 10,
+      width: 200
     }
   });
