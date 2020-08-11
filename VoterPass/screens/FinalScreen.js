@@ -51,7 +51,7 @@ print = async() =>{
 }
 
   let ID = route.params.ID;
-  let time = route.params.time;
+  let time = route.params.formattedTime;
   return (
 <>
     <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'

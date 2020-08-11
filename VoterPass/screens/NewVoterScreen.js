@@ -15,6 +15,8 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import CustomButton from '../components/CustomButton';
 import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling'
+import { selectAssetSource } from 'expo-asset/build/AssetSources';
+import { RotationGestureHandler } from 'react-native-gesture-handler';
 
 const db = SQLite.openDatabase("voter.db");
 
@@ -29,11 +31,26 @@ function NewScreen({ route, navigation }) {
     const [show, setShow] = React.useState(false);
 
     const add = () => {
-      console.log(lastTime);
-      setTime()
+      var meridian = "PM";
+      // Average Voting time in Milliseconds
+      var minInMill = route.params.votingTime * 60000;
+      
+      var returnTimeLast = route.params.lastTime + minInMill;
+      var returnTimeNow = (new Date().getTime()) + minInMill;
+      // Find Max HERE
+      var returnTime = Math.max(returnTimeLast, returnTimeNow)
+      route.params.setLastTime(returnTime); // when the next voter should comeback
+ 
+      var date = new Date(returnTime);
+      
+      var formattedTime = date.toLocaleTimeString("en-US");
+      formattedTime = formattedTime.substring(0,5) + formattedTime.substring(8,11);
+
+      console.log(formattedTime);
+      
       db.transaction(
         tx => {
-          tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, time]);
+          tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, formattedTime]);
           tx.executeSql("select * from voter", [], (_, { rows }) =>
             console.log(JSON.stringify(rows))
           );
@@ -41,6 +58,8 @@ function NewScreen({ route, navigation }) {
         () => {console.log("Error adding to database!")},
         null
       );
+      console.log("GENERATE ID CLICKED");
+        navigation.navigate('Final', {ID, formattedTime});
     }
 
     const getLastTime = () => {
@@ -90,10 +109,7 @@ function NewScreen({ route, navigation }) {
         title="Add New Voter"
         style={styles.button}
         onPress={() => {
-        add();
-        console.log("GENERATE ID CLICKED");
-        navigation.navigate('Final', {ID, time});
-          
+        add();      
         }}
       />
     </View>

@@ -13,9 +13,9 @@ import styles from '../Styling';
 
 
 function MainScreen({ navigation }) {
-  const [votingTime, setVotingTime] = React.useState(null);
-  const [lastTime, setLastTime] = React.useState(new Date());
-  //console.log(lastTime);
+  const [votingTime, setVotingTime] = React.useState(5);
+  const [lastTime, setLastTime] = React.useState(new Date().getTime());
+  console.log(lastTime);
     return (
       <View style={styles.container}>
         <CustomHeader/>
@@ -25,7 +25,7 @@ function MainScreen({ navigation }) {
         <Button 
         title="New Voter"
         style={styles.button}
-        onPress={() => navigation.navigate('NewVoter', { "lastTime": lastTime, "setLastTime": setLastTime} )}
+        onPress={() => navigation.navigate('NewVoter', { "lastTime": lastTime, "setLastTime": setLastTime, "votingTime": votingTime} )}
         />
         <Button 
         title="View List"

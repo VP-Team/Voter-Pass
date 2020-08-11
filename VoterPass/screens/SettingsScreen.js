@@ -50,7 +50,7 @@ function SettingsScreen({ route, navigation }) {
           <Picker
           selectedValue={votingTimeLocal}
           mode="dropdown"
-          onValueChange={itemValue => setVotingTimeLocal(itemValue)}>
+          onValueChange={itemValue => setVotingTimeLocal(parseInt(itemValue))}>
             {minutes.map((item, index) => (
               <Picker.Item label={item} value={item} key={index} />
             ))}
