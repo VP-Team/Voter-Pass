@@ -20,7 +20,7 @@ function CustomHeader() {
 
     return (
             <Header name='CustomHeader'
-            centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
+            centerComponent={{ text: 'VOTER PASS', style: { color: '#fff' } }}
             rightComponent={{ 
             icon: 'home', 
             color: 'white',

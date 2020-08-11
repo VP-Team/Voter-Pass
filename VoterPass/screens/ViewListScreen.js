@@ -66,22 +66,24 @@ function Voters() {
   return(
       <ScrollView style={styles.listItem}>
         {(checkedVoters.length > 0) && <View style={styles.container}>
-          <Text>Checked In</Text>
+          <Text style={styles.headerText}>Checked In</Text>
           {checkedVoters.map(({ id, time}) => (
             <View key={id} style={styles.card}>
-              <Text style={{fontSize: 15}}>Id: {id}</Text>
-              <Text style={{fontSize: 15}}>Time: {formatTime(time)}</Text>
-              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
+              <Text style={{fontSize: 15, textAlign: 'center'}}>ID: {id}</Text>
+              <Text style={{fontSize: 15, textAlign: 'center'}}>Time: {formatTime(time)}</Text>
+              <Text></Text>
+              <Button key={id} title="Delete" onPress={()=> handleClick(id)}></Button>
             </View>
           ))}
         </View>}
         <View style={styles.container}>
-          <Text>Unchecked In</Text>
+          <Text style={styles.headerText}>Unchecked In</Text>
           {uncheckedVoters.map(({ id, time}) => (
             <View key={id} style={styles.card}>
-              <Text style={{fontSize: 15}}>Id: {id}</Text>
-              <Text style={{fontSize: 15}}>Time: {formatTime(time)}</Text>
-              <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
+              <Text style={{fontSize: 15, textAlign: 'center'}}>ID: {id}</Text>
+              <Text style={{fontSize: 15, textAlign: 'center'}}>Time: {formatTime(time)}</Text>
+              <Text></Text>
+              <Button key={id} title="Delete" onPress={()=> handleClick(id)}></Button>
             </View>
           ))}
 
@@ -94,7 +96,7 @@ function ViewListScreen({ route , navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
-        <Text style={styles.headerText}>Voter List</Text>
+        <Text style={styles.welcomeText}>Voter List</Text>
         <Voters></Voters>
         {<Button 
         title="New Voter"

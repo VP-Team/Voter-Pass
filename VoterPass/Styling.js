@@ -27,6 +27,13 @@ export default StyleSheet.create({
       fontWeight: '500',
       color: '#2b8cd8',
     },
+    welcomeText: {
+      padding: 25,
+      textAlign: 'center',
+      fontSize: 50,
+      fontWeight: '500',
+      color: '#2b8cd8',
+    },
     returnTime: {
       fontSize: 35,
       padding:10,

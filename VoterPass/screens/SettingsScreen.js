@@ -32,8 +32,9 @@ function SettingsScreen({ route, navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
-        <Text style={styles.text}>Settings</Text>
-        <Text>Current voting time {votingTimeLocal} min</Text>
+        <Text style={styles.welcomeText}>Settings</Text>
+        <Text style={styles.headerText}>Current Average Time:</Text>
+        <Text style={styles.returnTime}>{votingTimeLocal} minutes</Text>
         <StatusBar style="auto" />
         <Button 
         title="Edit Time Average"

@@ -32,11 +32,9 @@ function HomeScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeaderFirst/>
-        <Text style={styles.headerText}>Welcome to VoterPass!</Text>
-        <Text></Text>
-        <Text></Text>
-        <Text style={styles.text}>Average Voting Time is: </Text>
-        <Text style={styles.text}>{votingTimeLocal} minutes</Text>
+        <Text style={styles.welcomeText}>Welcome to Voter Pass!</Text>
+        <Text style={styles.headerText}>Average Voting Time: </Text>
+        <Text style={styles.returnTime}>{votingTimeLocal} minutes</Text>
         <Divider style={{ backgroundColor: 'blue' }} />
         <StatusBar style="auto" />
         <Button 
@@ -63,7 +61,7 @@ function HomeScreen({ navigation }) {
         </Modal>
         <Button 
         style={styles.button}
-        title="Next"
+        title="Home"
         onPress={() => navigation.navigate('Main', {"initalVoteTime": votingTimeLocal})}
         />
       </View>

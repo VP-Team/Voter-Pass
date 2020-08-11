@@ -84,7 +84,7 @@ function NewScreen({ route, navigation }) {
       
       <View style={styles.container}>
       <CustomHeader/>
-      <Text style={styles.text}>New Voter information</Text>
+      <Text style={styles.headerText}>New Voter Information</Text>
 
       <Button 
         title="Add New Voter"
