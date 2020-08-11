@@ -14,7 +14,7 @@ import QRCode from '../components/QRCode';
 import { BaseRouter } from '@react-navigation/native';
 import ViewShot from 'react-native-view-shot';
 import * as Print from 'expo-print';
-import { CustomHeader } from '../components/CustomHeader';
+import CustomHeader from '../components/CustomHeader';
 import styles from '../Styling';
 import * as FileSystem from 'expo-file-system';
 
@@ -51,32 +51,34 @@ print = async() =>{
 }
 
   let ID = route.params.ID;
-  let time = route.params.time;
+  let time = route.params.formattedTime;
   return (
 <>
-    <ViewShot style={styles.container} ref={viewShotRef} options={{format:'png'
+    <CustomHeader/>
+    <Text style={styles.headerText}>New Voter Information</Text>
+    <ViewShot style={styles.QR} ref={viewShotRef} options={{format:'png'
     , quality:0.9}}>
-       <Text style={styles.text}>Confirmation Page</Text>
         <QRCode id = {ID}></QRCode>
-        <Text style={styles.text}>Return Time: {time}</Text>
+        <Text style={styles.returnTime}>Return Time: </Text>
+        <Text style={styles.returnTime}>{time}</Text>
         <StatusBar style="auto" />
 
       </ViewShot>
      <View style={styles.container}>
      <Button
         title={"Print"}
+        style={styles.button}
         onPress={async ()=> {
            print();
            
         }}
         />
         <Button 
+          style={styles.button}
           title={"Home"}
           onPress={() => navigation.navigate('Main')}
         />
-        
-     </View>
-      
+      </View>
       </>
       )
   }
