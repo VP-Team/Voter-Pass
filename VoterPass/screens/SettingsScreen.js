@@ -33,7 +33,7 @@ function SettingsScreen({ route, navigation }) {
       <View style={styles.container}>
         <CustomHeader/>
         <Text style={styles.text}>Settings</Text>
-        <Text>Current voting time {votingTimeLocal}</Text>
+        <Text>Current voting time {votingTimeLocal} min</Text>
         <StatusBar style="auto" />
         <Button 
         title="Edit Time Average"
