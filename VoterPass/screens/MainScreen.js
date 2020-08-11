@@ -13,38 +13,38 @@ import styles from '../Styling';
 
 
 function MainScreen({ navigation }) {
+  const [votingTime, setVotingTime] = React.useState(null)
     return (
       <View>
         <CustomHeader/>
-        <View style={styles.container}>
-          <Text style={styles.text}>Menu</Text>
-          <StatusBar style="auto" />
-          <Button 
-            title="New Voter"
-            style={styles.button}
-            onPress={() => navigation.navigate('NewVoter')}
-          />
-          <Button 
-            title="View List"
-            style={styles.button}
-            onPress={() => navigation.navigate('ViewList')}
-          />
-          <Button 
-            title="QR Scanner"
-            style={styles.button}
-            onPress={()=> navigation.navigate('QRCodeScanner')}
-          />
-          <Button 
-            title="List Settings"
-            style={styles.button}
-            onPress={() => navigation.navigate('Settings')}
-          />
-          <Button 
-            title="Help"
-            style={styles.button}
-            onPress={() => navigation.navigate('Help')}
-          />
-        </View>
+        <Text style={styles.text}>Menu</Text>
+        <Text style={styles.text}>Average Voting Time (per person): {votingTime} min</Text>
+        <StatusBar style="auto" />
+        <Button 
+        title="New Voter"
+        style={styles.button}
+        onPress={() => navigation.navigate('NewVoter')}
+        />
+        <Button 
+        title="View List"
+        style={styles.button}
+        onPress={() => navigation.navigate('ViewList')}
+        />
+        <Button 
+        title="QR Scanner"
+        style={styles.button}
+        onPress={()=> navigation.navigate('QRCodeScanner')}
+        />
+        <Button 
+        title="List Settings"
+        style={styles.button}
+        onPress={() => navigation.navigate('Settings', {"votingTime": votingTime, "setVotingTime": setVotingTime} )}
+        />
+        <Button 
+        title="Help"
+        style={styles.button}
+        onPress={() => navigation.navigate('Help')}
+        />
       </View>
     )
   }

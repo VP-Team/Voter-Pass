@@ -55,7 +55,7 @@ function Voters() {
         {(checkedVoters.length > 0) && <View style={styles.container}>
           <Text>Checked In</Text>
           {checkedVoters.map(({ id, time}) => (
-            <View style={styles.card}>
+            <View key={id} style={styles.card}>
               <Text style={styles.text}>Id: {id} Time: {time}</Text>
               <Text style={styles.text}></Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
@@ -65,7 +65,7 @@ function Voters() {
         <View style={styles.container}>
           <Text>Unchecked In</Text>
           {uncheckedVoters.map(({ id, time}) => (
-            <View style={styles.card}>
+            <View key={id} style={styles.card}>
               <Text style={{fontSize: 15}}>Id: {id}</Text>
               <Text style={{fontSize: 15}}>Time: {time}</Text>
               <Button key={id} title="delete" onPress={()=> handleClick(id)}></Button>
@@ -83,9 +83,9 @@ function ViewListScreen({ navigation }) {
         <CustomHeader/>
         <Voters></Voters>
         <Button 
-        title="New Voter"
-        style={styles.button}
-        onPress={() => navigation.navigate('NewVoter')}
+          title="New Voter"
+          style={styles.button}
+          onPress={() => navigation.navigate('NewVoter')}
         />
       </View>
     )
