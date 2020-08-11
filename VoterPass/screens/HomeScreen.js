@@ -12,9 +12,6 @@ import { Button, ThemeProvider, Divider, Header } from 'react-native-elements';
 import CustomHeaderFirst from '../components/CustomHeaderFirst';
 import styles from '../Styling'
 import { TextInput } from 'react-native-gesture-handler';
-import Logo from '../VPLogo.png';
-import Video from 'react-native-video';
-import LogoVideo from '../VP Splash.mp4'
 
 function HomeScreen({ navigation }) {
 
@@ -40,8 +37,6 @@ function HomeScreen({ navigation }) {
         title="Home"
         onPress={() => navigation.navigate('Main')}
         />
-        
-        
       </View>
     );
   }

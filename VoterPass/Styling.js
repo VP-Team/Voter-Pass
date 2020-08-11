@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native'; 
+import { StyleSheet, Dimensions, ImageBackground } from 'react-native'; 
 
 export default StyleSheet.create({
     container: {
@@ -65,7 +65,4 @@ export default StyleSheet.create({
       width: '100%',
       height: '50%'
     },
-    logoStyle: {
-     
-    }
   });

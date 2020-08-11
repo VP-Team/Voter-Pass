@@ -3,14 +3,14 @@ import {
     View,
     Text,
     StyleSheet,
-    AsyncStorage
+    AsyncStorage,
+    ImageBackground
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Button, ThemeProvider, Header } from 'react-native-elements';
+import { Button, ThemeProvider, Header, Image } from 'react-native-elements';
 import HomeScreen from './HomeScreen';
 import CustomHeaderMain from '../components/CustomHeaderMain';
 import styles from '../Styling';
-
 
 function MainScreen({ navigation }) {
     return (
