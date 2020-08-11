@@ -63,12 +63,12 @@ function ViewListScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
-        <Text style={styles.text}>View List</Text>
+        <Text style={styles.headerText}>Voter List</Text>
         <Voters></Voters>
         {<Button 
         title="New Voter"
         style={styles.button}
-        onPress={() => navigation.navigate('New')}
+        onPress={() => navigation.navigate('NewVoter')}
         />}
       </View>
     )

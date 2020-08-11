@@ -8,24 +8,19 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { Button } from 'react-native'
 import QRCode from '../components/QRCode';
+import CustomHeader from '../components/CustomHeader';
+import styles from '../Styling'
 
 function HelpScreen({ route, navigation }) {
   
   return (
       <View style={styles.container}>
-        <Text>Hello!!</Text>
+        <CustomHeader/>
+        <Text style={styles.text}>Hello!!</Text>
        
       </View>
     )
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }
-  });
 
   export default HelpScreen;

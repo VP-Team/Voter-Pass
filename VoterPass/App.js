@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import * as SQLite from 'expo-sqlite';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -19,6 +19,8 @@ import FinalScreen from './screens/FinalScreen';
 import CustomHeader from './components/CustomHeader';
 import DrawerMenu from './navigation/DrawerMenu';
 import Drawer from 'react-native-drawer';
+import SplashScreen from 'react-native-splash-screen';
+import Splash from './screens/SplashScreen';
 //import Button from './components/Button';
 //import { Button } from '@material-ui/core';
 //import 'fontsource-roboto';
@@ -40,6 +42,7 @@ function NavScreens() {
       headerShown: false
     }}
     >
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="NewVoter" component={NewVoterScreen} />
         <Stack.Screen name="Scan" component={ScanScreen} />

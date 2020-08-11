@@ -16,7 +16,7 @@ function MainScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <CustomHeader/>
-        <Text style={styles.text}>Menu</Text>
+        <Text style={styles.headerText}>Menu</Text>
         <StatusBar style="auto" />
         <Button 
         title="New Voter"
