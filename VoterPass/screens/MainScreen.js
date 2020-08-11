@@ -17,7 +17,7 @@ function MainScreen({ navigation }) {
   const [lastTime, setLastTime] = React.useState(new Date().getTime());
   console.log(lastTime);
     return (
-      <View style={styles.container}>
+      <View>
         <CustomHeader/>
         <Text style={styles.text}>Menu</Text>
         <Text style={styles.text}>Average Voting Time (per person): {votingTime} min</Text>

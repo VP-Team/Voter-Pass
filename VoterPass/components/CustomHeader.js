@@ -15,9 +15,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 function CustomHeader({ navigation }) {
     return (
-            <Header name='CustomHeader'
-            leftComponent={DrawerMenu}
-            centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
+            <Header 
+                style={{alignContent: 'top'}}
+                name='CustomHeader'
+                leftComponent={DrawerMenu}
+                centerComponent={{ text: 'VOTERPASS', style: { color: '#fff' } }}
             />
     )
 }
