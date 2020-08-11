@@ -8,14 +8,14 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { Button, ThemeProvider, Header } from 'react-native-elements';
 import HomeScreen from './HomeScreen';
-import CustomHeader from '../components/CustomHeader';
+import CustomHeaderMain from '../components/CustomHeaderMain';
 import styles from '../Styling';
 
 
 function MainScreen({ navigation }) {
     return (
       <View style={styles.container}>
-        <CustomHeader/>
+        <CustomHeaderMain/>
         <Text style={styles.headerText}>Menu</Text>
         <StatusBar style="auto" />
         <Button 
@@ -37,11 +37,6 @@ function MainScreen({ navigation }) {
         title="List Settings"
         style={styles.button}
         onPress={() => navigation.navigate('Settings')}
-        />
-        <Button 
-        title="Help"
-        style={styles.button}
-        onPress={() => navigation.navigate('Help')}
         />
       </View>
     )

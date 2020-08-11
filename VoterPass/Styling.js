@@ -64,5 +64,8 @@ export default StyleSheet.create({
     QROverlay: {
       width: '100%',
       height: '50%'
+    },
+    logoStyle: {
+     
     }
   });
