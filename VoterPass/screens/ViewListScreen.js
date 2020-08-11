@@ -68,7 +68,7 @@ function ViewListScreen({ navigation }) {
         {<Button 
         title="New Voter"
         style={styles.button}
-        onPress={() => navigation.navigate('New')}
+        onPress={() => navigation.navigate('NewVoter')}
         />}
       </View>
     )

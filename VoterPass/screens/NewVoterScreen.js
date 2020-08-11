@@ -20,7 +20,7 @@ const db = SQLite.openDatabase("voter.db");
 
 const default_date = new Date("2015-03-25T12:00:00Z");
 
-function NewScreen({ navigation }) {
+function NewScreen({ route, navigation }) {
     const [forceUpdate, forceUpdateId] = useForceUpdate();
     const [ID, setID] = React.useState(uuid());
     const [time, setTime] = React.useState(null);
@@ -29,6 +29,8 @@ function NewScreen({ navigation }) {
     const [show, setShow] = React.useState(false);
 
     const add = () => {
+      console.log(lastTime);
+      setTime()
       db.transaction(
         tx => {
           tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, time]);
@@ -41,7 +43,10 @@ function NewScreen({ navigation }) {
       );
     }
 
-
+    const getLastTime = () => {
+      console.log(route.params.lastTime);    
+    }
+  
     const showTimePicker = () => {
       setTimePickerVisibility(true);
     };
@@ -51,6 +56,7 @@ function NewScreen({ navigation }) {
     };
   
     const handleConfirm = (time) => {
+      getLastTime();
       console.log("A time has been picked: ", time);
       let hours = time.getHours();
       if(hours == 0)
@@ -75,30 +81,19 @@ function NewScreen({ navigation }) {
     };
 
     return (
+      
       <View style={styles.container}>
       <CustomHeader/>
       <Text style={styles.text}>New Voter information</Text>
-      <Button title="Select Time" style={styles.button} onPress={showTimePicker} />
-      <DateTimePickerModal
-        isVisible={isTimePickerVisible}
-        mode="time"
-        headerTextIOS="Pick a return time"
-        onConfirm={handleConfirm}
-        onCancel={hideTimePicker}
-      />
-      {/* based on if they have confirmed time or not, display the Vote time*/}
-      {show && <Text>Vote Time: {time}</Text>}
+
       <Button 
         title="Add New Voter"
         style={styles.button}
         onPress={() => {
-          if(time){
-            add();
-            console.log("GENERATE ID CLICKED");
-            navigation.navigate('Final', {ID, time});
-          } else{
-              Alert.alert("No time entered!", "Please enter a voting time", [{text: "OK"}])
-          }
+        add();
+        console.log("GENERATE ID CLICKED");
+        navigation.navigate('Final', {ID, time});
+          
         }}
       />
     </View>
