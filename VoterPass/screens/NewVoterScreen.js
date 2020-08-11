@@ -50,7 +50,7 @@ function NewScreen({ route, navigation }) {
       
       db.transaction(
         tx => {
-          tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, formattedTime]);
+          tx.executeSql("insert into voter (id, time, check_in) values (?, ?, 0)", [ID, returnTime]);
           tx.executeSql("select * from voter", [], (_, { rows }) =>
             console.log(JSON.stringify(rows))
           );

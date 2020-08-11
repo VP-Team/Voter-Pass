@@ -71,7 +71,7 @@ function App() {
   React.useEffect(() => {
     db.transaction(tx => {
       //tx.executeSql("DROP TABLE IF EXISTS VOTER");
-      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time text, check_in integer);");
+      tx.executeSql("CREATE TABLE IF NOT EXISTS VOTER (id text primary key not null, time int, check_in integer);");
     });
   }, [])
   //const scheme = useColorScheme();

@@ -25,15 +25,49 @@ export default function QRCodeScaner ({navigation}) {
 
   const checkValidId = (data) => {
     db.transaction(tx => {
+      
       tx.executeSql(
-        "SELECT id FROM voter WHERE id=?;", [data],
+        "SELECT id, time FROM voter WHERE id=?;", [data],
         (_, { rows: { _array } }) => {
           {/* Query gets the count of the ID's that match the data passed in, if the array is not null then we found the ID in the database
               so alert that we found and set idIsValid to true */}
           console.log(JSON.stringify(_array))
           console.log(_array.length)
+          var returnTime = _array[0].time;
+          var offsetVal= 10*60000;
+          var currTime = new Date().getTime();
+          console.log(returnTime)
           if(_array.length != 0){
             if(!idIsValid){
+              if(currTime-offsetVal<returnTime){
+                Alert.alert("Voter Is Too Early", "ID is valid. Come back later.", [
+                  {
+                    text: "Scan",
+                    style: "cancel"
+                  },
+                  {
+                    text: "Back to Main",
+                    onPress: () => {navigation.navigate('Main')},
+                    style: "default"
+                  }
+                ]);
+                setIdIsValid(false);
+              }
+              else if(currTime+offsetVal>returnTime){
+                Alert.alert("Voter Is Too Late", "ID is no longer valid.", [
+                  {
+                    text: "Scan",
+                    style: "cancel"
+                  },
+                  {
+                    text: "Back to Main",
+                    onPress: () => {navigation.navigate('Main')},
+                    style: "default"
+                  }
+                ]);
+                setIdIsValid(false);
+              }
+              else{
               console.log();
               Alert.alert("Voter Valid", "ID is valid. Check in voter?", [{
                 text: "No",
@@ -43,11 +77,13 @@ export default function QRCodeScaner ({navigation}) {
                 text: "Yes",
                 onPress: () => {
                   checkInVoter(data)
+                  setIdIsValid(true);
                   navigation.navigate('Main');
                 },
                 style: "default"
               }]);
-              setIdIsValid(true);
+              
+              }
             }
           } else{
             Alert.alert("Voter Not Valid", "ID is not valid.", [

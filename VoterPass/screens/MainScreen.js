@@ -34,7 +34,7 @@ function MainScreen({ navigation }) {
         <Button 
         title="QR Scanner"
         style={styles.button}
-        onPress={()=> navigation.navigate('QRCodeScanner')}
+        onPress={()=> navigation.navigate('QRCodeScanner', {"votingTime": votingTime})}
         />
         <Button 
         title="List Settings"
