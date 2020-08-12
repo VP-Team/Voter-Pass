@@ -36,13 +36,15 @@ export default function QRCodeScaner ({navigation}) {
               so alert that we found and set idIsValid to true */}
           console.log(JSON.stringify(_array))
           console.log(_array.length)
-          var returnTime = _array[0].time;
-          var offsetVal= 10*60000;
-          var currTime = new Date().getTime();
+          
+          let returnTime = _array[0].time;
+          let offsetVal= 10*60000;
+          let currTime = new Date().getTime();
+          console.log(currTime-offsetVal)
           console.log(returnTime)
           if(_array.length != 0){
             if(!idIsValid){
-              if(currTime-offsetVal<returnTime){
+              if((returnTime-offsetVal)>currTime){
                 Alert.alert("Voter Is Too Early", "ID is valid. Come back later.", [
                   {
                     text: "Scan",
@@ -56,7 +58,7 @@ export default function QRCodeScaner ({navigation}) {
                 ]);
                 setIdIsValid(false);
               }
-              else if(currTime+offsetVal>returnTime){
+              else if((returnTime+offsetVal)<currTime){
                 Alert.alert("Voter Is Too Late", "ID is no longer valid.", [
                   {
                     text: "Scan",
